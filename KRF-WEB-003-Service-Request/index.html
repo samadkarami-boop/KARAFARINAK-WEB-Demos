@@ -1,0 +1,35 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="description" content="قالب حرفه‌ای و واکنش‌گرا برای شرکت‌های خدماتی، تعمیرات، نظافت، نصب و خدمات در محل.">
+<meta name="theme-color" content="#182027">
+<title>خدمت‌یار | درخواست خدمات</title>
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+<header>
+  <div class="container nav">
+    <a class="brand" href="#top" aria-label="خدمت‌یار - صفحه اصلی">خدمت‌یار</a>
+    <button class="menu-toggle" type="button" aria-label="باز کردن منو" aria-expanded="false" aria-controls="siteNav">منو</button>
+    <nav id="siteNav" aria-label="ناوبری اصلی">
+      <a href="#services">خدمات</a>
+      <a href="#how">چطور کار می‌کند؟</a>
+      <a href="#faq">سؤالات</a>
+    </nav>
+    <a class="btn nav-cta" href="#request">درخواست خدمت</a>
+  </div>
+</header>
+<main id="top">
+  <section class="hero"><div class="container"><small>خدمات حرفه‌ای، سریع و قابل اعتماد</small><h1>خدمت موردنظرت را<br><em>ساده درخواست کن.</em></h1><p>قالب مناسب شرکت‌های خدماتی، تعمیرات، نظافت، نصب، پشتیبانی و خدمات در محل.</p><a class="btn primary" href="#request">شروع درخواست</a></div></section>
+  <section id="services" class="section"><div class="container"><small>دسته‌بندی خدمات</small><h2>هر خدمت، یک مسیر روشن</h2><div class="cards"><article><b>01</b><h3>تعمیر و نصب</h3><p>تعمیرات، نصب تجهیزات و سرویس دوره‌ای.</p></article><article><b>02</b><h3>خدمات منزل</h3><p>نظافت، جابه‌جایی و خدمات موردنیاز خانه.</p></article><article><b>03</b><h3>خدمات سازمانی</h3><p>پشتیبانی و سرویس قراردادهای شرکتی.</p></article></div></div></section>
+  <section id="how" class="section soft"><div class="container"><small>فرآیند</small><h2>در سه قدم</h2><div class="steps"><div><b>۱</b><h3>درخواست</h3><p>نیاز خود را ثبت کنید.</p></div><div><b>۲</b><h3>هماهنگی</h3><p>کارشناس زمان و هزینه را بررسی می‌کند.</p></div><div><b>۳</b><h3>انجام خدمت</h3><p>خدمت در زمان توافق‌شده انجام می‌شود.</p></div></div></div></section>
+  <section id="request" class="contact"><div class="container"><div><small>درخواست آنلاین</small><h2>چه خدمتی لازم دارید؟</h2><p>فرم را تکمیل کنید؛ در نسخه واقعی به CRM یا پنل خدمات متصل می‌شود.</p></div><form id="requestForm"><label for="name">نام شما</label><input id="name" name="name" required autocomplete="name" placeholder="نام و نام خانوادگی"><label for="phone">شماره تماس</label><input id="phone" name="phone" type="tel" inputmode="tel" autocomplete="tel" placeholder="شماره تماس"><label for="service">نوع خدمت</label><select id="service" name="service" required><option value="">نوع خدمت</option><option>تعمیر و نصب</option><option>خدمات منزل</option><option>خدمات سازمانی</option></select><label for="details">توضیحات</label><textarea id="details" name="details" placeholder="توضیحات درخواست"></textarea><button class="btn primary" type="submit">ثبت درخواست</button></form></div></section>
+  <section id="faq" class="section"><div class="container"><small>پاسخ سریع</small><h2>سؤالات متداول</h2><details><summary>هزینه چگونه اعلام می‌شود؟</summary><p>پس از بررسی درخواست، قیمت در سیستم واقعی اعلام می‌شود.</p></details><details><summary>امکان انتخاب زمان وجود دارد؟</summary><p>بله؛ می‌توان زمان‌های قابل رزرو را نمایش داد.</p></details></div></section>
+</main>
+<footer><div class="container">خدمت‌یار · KRF-WEB-003 کارآفرینک</div></footer>
+<div id="toast" role="status" aria-live="polite"></div>
+<script src="script.js"></script>
+</body>
+</html>
