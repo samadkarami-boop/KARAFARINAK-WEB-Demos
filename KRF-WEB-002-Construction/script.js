@@ -1,0 +1,8 @@
+const form=document.querySelector('#contactForm');
+const toast=document.querySelector('#toast');
+const menuToggle=document.querySelector('.menu-toggle');
+const nav=document.querySelector('#siteNav');
+function showToast(message){if(!toast)return;toast.textContent=message;toast.classList.add('show');window.setTimeout(()=>toast.classList.remove('show'),2200)}
+form?.addEventListener('submit',(event)=>{event.preventDefault();if(!form.reportValidity())return;showToast('درخواست پروژه دریافت شد.');form.reset()});
+menuToggle?.addEventListener('click',()=>{const isOpen=nav?.classList.toggle('open')??false;menuToggle.setAttribute('aria-expanded',String(isOpen))});
+nav?.querySelectorAll('a').forEach(link=>link.addEventListener('click',()=>{nav.classList.remove('open');menuToggle?.setAttribute('aria-expanded','false')}));
