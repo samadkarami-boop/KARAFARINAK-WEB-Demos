@@ -26,5 +26,34 @@ The freelance project request form was corrected and verified in the Preview sou
 - Final content SHA: `3f170b1b3967214771dff5f08e87350bd43836f6`.
 - The source was re-read after the update to confirm the changes.
 
+## Website Templates page — approved visual state
+The page `theme-preview/website-templates.html` was refined and then approved by the user.
+
+### Applied changes
+- Removed the old `KARAFARINAK WEB TEMPLATES` eyebrow from the page.
+- Kept the main heading `قالب‌های آماده سایت`.
+- Both Static and Dynamic feature lists are right-aligned and each line has a green check mark.
+- Feature text was made slightly darker/bolder so it does not look washed out.
+- Green check marks were made slightly stronger.
+- The two green price/position lines at the bottom of the Static and Dynamic sections were aligned to the same vertical level.
+- The two bottom action cards/buttons were aligned to the same vertical level.
+- Static and Dynamic action cards remain the only clickable areas in the two main sections.
+- No change was made to the shared `style.css` for this adjustment; the alignment/contrast refinements are isolated to `website-templates.html`.
+
+### Current code state
+- `theme-preview/website-templates.html`
+- Commit before backup: `689d77eb9a26eedba5b2462ecd5318d18fb269a3`
+- Current content SHA before the backup commit: `ce8eba2dffeb4e8db99d630f617a98447323c991`
+- The source was re-read after the update and verified.
+
+## Backup / restore point
+Because the user wants an immutable restore point before further visual edits, an exact backup of the approved `website-templates.html` was created:
+
+- Backup file: `docs/backups/website-templates-2026-09-17-approved.html`
+- Backup commit: `63a8d305953d227d71cfabc1e3712620cff552a8`
+- This backup contains the exact approved HTML/CSS inline state of the page at the time of approval.
+- Future edits to this page should be made only after fetching the current file and should not overwrite this backup.
+- If a later design change makes the page worse, this backup is the restore reference.
+
 ## Live-test limitation
-The Preview is static GitHub Pages content. It can test client-side validation and the visible success/error messages, but it cannot verify actual WordPress email delivery. Real delivery must be tested on the WordPress site with active `wp_mail`/SMTP configuration.
+The Preview is static GitHub Pages content. It can test client-side validation and visible layout/source changes, but GitHub connector verification does not provide browser-level visual confirmation. The website-templates source itself was re-read after the latest change. GitHub Pages deployment status was not independently confirmed for commit `689d77eb9a26eedba5b2462ecd5318d18fb269a3` through the available commit-workflow endpoint.
