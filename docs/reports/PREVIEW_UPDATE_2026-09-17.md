@@ -4,27 +4,27 @@
 - Preview repository: `samadkarami-boop/KARAFARINAK-WEB-Demos` (public).
 - Homepage: `theme-preview/index.html`.
 - Styles: `theme-preview/style.css`.
-- Current Preview Hero asset is `theme-preview/hero-robots.svg`.
-- The main WordPress repository contains the canonical Hero image `assets/images/hero-robots.jpg` (about 617 KB), and the WordPress CSS references that JPG directly.
+- Preview Hero asset remains the configured repository asset; canonical WordPress Hero JPG is tracked separately.
 
-## Verification performed
-- Confirmed the Preview homepage contains the four compact cards and their four SVG card illustrations.
-- Confirmed the Preview CSS currently references `hero-robots.svg`.
-- Confirmed the SVG exists in the Preview repository.
-- Confirmed the canonical JPG exists in the private WordPress repository.
-- Confirmed the Preview repository has a GitHub Pages deployment workflow at `.github/workflows/static.yml`.
+## Forms QA update
+The freelance project request form was corrected and verified in the Preview source.
 
-## Important constraint
-The connected GitHub file API can read the private JPG, but the binary blob cannot be written into the public Preview repository through the available UTF-8 file-update operation. The raw binary fetch also cannot be passed directly as a binary file between the two repositories. Therefore the canonical JPG has **not** been replaced by a redesigned/conversion substitute.
+### Project Request form
+- Email field is explicitly required and marked with `*`.
+- Email uses `type="email"` and `inputmode="email"`.
+- Custom email-format validation is active.
+- Required-field errors are shown in English only.
+- Invalid email error is shown in English only: `Please enter a valid email address.`
+- Submit validation error is shown in English only: `Please correct the highlighted fields and try again.`
+- Successful demo submission message is shown in English only: `Your project request has been submitted successfully.`
+- Submit button uses `type="submit"`.
+- The Preview remains a static demo; this success message does not represent real email delivery.
 
-## Required next step
-To complete the requested visual test with the exact canonical JPG, the original `hero-robots.jpg` must first be made available to the public Preview repository (or to a public asset URL) without converting/redesigning it. After that:
-1. Point `theme-preview/style.css` to the real JPG.
-2. Trigger GitHub Pages deployment.
-3. Open the live Preview and verify the Hero image actually loads.
-4. Verify desktop/mobile Hero proportions and the four-card layout.
-5. Record the successful deployment/test commit here.
+### Verification
+- The updated `theme-preview/project-request.html` was written to the `main` branch.
+- Final commit: `458b52287602118c2617f78d64a814b90b3e3c0c`.
+- Final content SHA: `3f170b1b3967214771dff5f08e87350bd43836f6`.
+- The source was re-read after the update to confirm the changes.
 
-## Do not do
-- Do not replace the canonical JPG with `hero-robots.svg` for the final test.
-- Do not redesign or regenerate the Hero image while claiming it is the original asset.
+## Live-test limitation
+The Preview is static GitHub Pages content. It can test client-side validation and the visible success/error messages, but it cannot verify actual WordPress email delivery. Real delivery must be tested on the WordPress site with active `wp_mail`/SMTP configuration.
