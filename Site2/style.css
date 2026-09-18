@@ -53,3 +53,44 @@
   .preview-section-title{font-size:.9rem;padding:12px 14px}
   .large-preview-frame{min-height:300px}
 }
+
+
+/* Dynamic website terms landing page */
+.dynamic-intro-page{background:#0e2743;color:#f4f8fb}
+.dynamic-intro-page .site-header{background:rgba(9,28,49,.97);border-bottom-color:rgba(255,255,255,.09)}
+.dynamic-intro-page .brand{color:#fff}
+.dynamic-intro-page .brand small{color:#d7e5f2}
+.dynamic-intro-page .main-nav a{color:#c7d7e5}
+.dynamic-intro-page .main-nav a:hover,.dynamic-intro-page .main-nav a.active{color:#fff}
+.dynamic-intro-page .cart-count{background:#2868d8}
+.dynamic-intro-shell{padding:48px 20px 76px}
+.dynamic-intro{width:min(980px,100%);margin:0 auto}
+.dynamic-intro-head{padding:10px 8px 28px;text-align:center}
+.dynamic-eyebrow{display:inline-block;margin-bottom:10px;color:#9fc1e2;font-size:.76rem;font-weight:800;letter-spacing:.14em}
+.dynamic-intro-head h1{margin:0 0 14px;color:#fff;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.35}
+.dynamic-intro-head p{max-width:820px;margin:0 auto;color:#d7e4ef;font-size:.98rem;line-height:2.1}
+.dynamic-sections{display:grid;gap:14px}
+.dynamic-section{padding:24px 26px;border:1px solid rgba(205,226,243,.17);border-radius:18px;background:linear-gradient(145deg,#163654,#102d4b);box-shadow:0 16px 38px rgba(0,0,0,.18)}
+.dynamic-section h2{margin:0 0 12px;color:#fff;font-size:1.05rem;line-height:1.7}
+.dynamic-section p{margin:0 0 10px;color:#e0ebf4;font-size:.86rem;line-height:2.05}
+.dynamic-section p:last-child{margin-bottom:0}
+.dynamic-section strong{color:#fff}
+.dynamic-acceptance{margin-top:18px;padding:26px;border:1px solid rgba(161,204,235,.28);border-radius:20px;background:linear-gradient(145deg,#1a4164,#123451);box-shadow:0 20px 45px rgba(0,0,0,.22)}
+.dynamic-acceptance h2{margin:0 0 10px;color:#fff;text-align:center;font-size:1.25rem}
+.dynamic-acceptance>p{margin:0 auto 18px;max-width:850px;color:#e2edf5;text-align:center;font-size:.86rem;line-height:2.05}
+.dynamic-accept-check{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border:1px solid rgba(214,231,244,.2);border-radius:14px;background:rgba(255,255,255,.055);color:#fff;cursor:pointer;font-size:.86rem;line-height:1.9}
+.dynamic-accept-check input{width:20px;height:20px;flex:none;margin:2px 0 0}
+.dynamic-next-btn{display:block;width:min(420px,100%);margin:18px auto 0;padding:13px 18px;border:1px solid #4f9be0;border-radius:12px;background:#2868d8;color:#fff;font:inherit;font-size:.9rem;font-weight:800;cursor:pointer;transition:.2s}
+.dynamic-next-btn:hover:not(:disabled){transform:translateY(-1px);background:#3476e0}
+.dynamic-next-btn:disabled{opacity:.42;cursor:not-allowed}
+.dynamic-next-note{min-height:1.8em;margin:10px 0 0!important;color:#b8d4ea!important;text-align:center;font-size:.74rem!important}
+.dynamic-intro-page .site-footer{background:#0a2037;border-top-color:rgba(255,255,255,.1);color:#b8cad9}
+.dynamic-intro-page .footer-brand{color:#fff}
+@media(max-width:700px){
+  .dynamic-intro-shell{padding:30px 12px 54px}
+  .dynamic-intro-head{padding-bottom:22px}
+  .dynamic-section{padding:19px 18px}
+  .dynamic-section h2{font-size:.98rem}
+  .dynamic-section p,.dynamic-acceptance>p,.dynamic-accept-check{font-size:.82rem}
+  .dynamic-acceptance{padding:20px 16px}
+}
