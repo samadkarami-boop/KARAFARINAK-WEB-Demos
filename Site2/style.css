@@ -40,3 +40,6 @@
 .row-buy{cursor:pointer}
 .row-buy.disabled{pointer-events:auto}
 @media(max-width:600px){.template-features{gap:6px}.template-features span{font-size:.67rem;padding:6px 10px}.preview-section-title{font-size:.9rem;padding:12px 14px}}
+
+.preview-section-title{text-align:center;background:linear-gradient(145deg,#f8f4e8,#f1ead8)}
+.large-preview-frame{background:linear-gradient(145deg,#f8f4e8,#f1ead8)}
