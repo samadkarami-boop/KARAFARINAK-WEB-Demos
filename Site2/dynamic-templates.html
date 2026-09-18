@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>شرایط و ضوابط طراحی سایت دینامیک | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260918-2315">
+  <link rel="stylesheet" href="style.css?v=20260918-2330">
 </head>
 <body class="dynamic-intro-page">
   <header class="site-header">
@@ -172,7 +172,13 @@
 
     termsCheck.addEventListener('change', () => {
       nextButton.disabled = !termsCheck.checked;
-      nextNote.textContent = termsCheck.checked ? 'شرایط پذیرفته شد. مرحله بعد پس از آماده‌سازی فعال خواهد شد.' : '';
+      nextNote.textContent = termsCheck.checked ? 'شرایط پذیرفته شد.' : '';
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (!nextButton.disabled) {
+        window.location.href = 'dynamic-site-type.html';
+      }
     });
   </script>
 </body>
