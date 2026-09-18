@@ -1,9 +1,12 @@
-# Deploy approved static previews to GitHub Pages
-name: Deploy static preview to Pages
+name: Deploy static previews to GitHub Pages
 
 on:
   push:
     branches: ["main"]
+    paths:
+      - "theme-preview/**"
+      - "Site2/**"
+      - ".github/workflows/static.yml"
   workflow_dispatch:
 
 permissions:
@@ -12,35 +15,48 @@ permissions:
   id-token: write
 
 concurrency:
-  group: "pages"
-  cancel-in-progress: false
+  group: github-pages
+  cancel-in-progress: true
 
 jobs:
   deploy:
+    runs-on: ubuntu-latest
     environment:
       name: github-pages
       url: ${{ steps.deployment.outputs.page_url }}
-    runs-on: ubuntu-latest
+
     steps:
-      - name: Checkout
+      - name: Checkout repository
         uses: actions/checkout@v4
 
-      - name: Setup Pages
+      - name: Configure GitHub Pages
         uses: actions/configure-pages@v5
 
-      - name: Build preview site
+      - name: Build Pages site
+        shell: bash
         run: |
+          set -euo pipefail
+
           rm -rf _site
           mkdir -p _site
-          cp -R theme-preview/. _site/.
-          rm -rf _site/Site2
-          mkdir -p _site/Site2/Preview
-          rsync -a --exclude='Preview' --exclude='SITE2_REPORT.md' Site2/ _site/Site2/Preview/
 
-      - name: Upload artifact
+          # Existing approved static preview at site root
+          cp -R theme-preview/. _site/.
+
+          # Site2 preview at /Site2/Preview/
+          mkdir -p _site/Site2/Preview
+          rsync -a \
+            --exclude='Preview/' \
+            --exclude='SITE2_REPORT.md' \
+            Site2/ _site/Site2/Preview/
+
+          # Keep repository-only placeholder/report files out of the public preview
+          rm -f _site/Site2/Preview/.gitkeep
+
+      - name: Upload Pages artifact
         uses: actions/upload-pages-artifact@v3
         with:
-          path: './_site'
+          path: _site
 
       - name: Deploy to GitHub Pages
         id: deployment
