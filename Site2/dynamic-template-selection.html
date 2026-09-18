@@ -47,17 +47,17 @@
 
       <section class="dynamic-template-box dynamic-variation-box">
         <div class="dynamic-template-section-head">
-          <h2>۲. انتخاب قالب</h2>
-          <span id="variation-hint">پس از انتخاب زمینه، قالب‌های آن نمایش داده می‌شوند.</span>
+          <h2>۲. انتخاب واریانت قالب</h2>
+          <span id="variation-hint">پس از انتخاب زمینه، واریانت‌های آن نمایش داده می‌شوند.</span>
         </div>
         <div class="dynamic-variation-table-wrap">
           <table class="dynamic-variation-table">
             <thead>
               <tr>
                 <th>انتخاب</th>
-                <th>کد قالب</th>
-                <th>عنوان قالب</th>
-                <th>قیمت</th>
+                <th>شناسه</th>
+                <th>عنوان واریانت</th>
+                <th>هزینه</th>
                 <th>زمان</th>
               </tr>
             </thead>
@@ -69,11 +69,11 @@
       </section>
 
       <section class="dynamic-template-preview" id="template-preview">
-        <div class="dynamic-template-preview-head">پیش‌نمایش قالب انتخابی</div>
+        <div class="dynamic-template-preview-head">پیش‌نمایش واریانت انتخاب‌شده</div>
         <div class="dynamic-template-preview-body">
           <div class="preview-placeholder">
-            <strong id="preview-title">هنوز قالبی انتخاب نشده است</strong>
-            <span id="preview-detail">پس از انتخاب قالب، مشخصات آن در این بخش نمایش داده می‌شود.</span>
+            <strong id="preview-title">هنوز واریانتی انتخاب نشده است</strong>
+            <span id="preview-detail">پس از انتخاب واریانت، مشخصات آن در این بخش نمایش داده می‌شود.</span>
           </div>
         </div>
       </section>
@@ -88,24 +88,20 @@
           <strong id="summary-template">انتخاب نشده</strong>
         </div>
         <div>
-          <span>قیمت پایه</span>
+          <span>هزینه طراحی اولیه</span>
           <strong>۱۰,۰۰۰,۰۰۰ تومان</strong>
         </div>
         <div>
-          <span>افزایش قیمت قالب</span>
-          <strong>۲,۰۰۰,۰۰۰ تومان</strong>
+          <span>هزینه واریانت قالب</span>
+          <strong>رایگان</strong>
         </div>
         <div>
-          <span>قیمت پس از انتخاب قالب</span>
-          <strong id="summary-price">۱۲,۰۰۰,۰۰۰ تومان</strong>
+          <span>مبلغ نهایی فعلی</span>
+          <strong id="summary-price">۱۰,۰۰۰,۰۰۰ تومان</strong>
         </div>
         <div>
           <span>زمان پایه</span>
           <strong>۷ روز کاری</strong>
-        </div>
-        <div>
-          <span>زمان اضافه قالب</span>
-          <strong>۲ روز کاری</strong>
         </div>
         <div>
           <span>زمان آماده‌سازی برآوردی</span>
@@ -131,46 +127,46 @@
   <script>
     const families = {
       content: [
-        {id:'corporate', title:'Corporate', fa:'شرکتی', desc:'سایت‌های شرکتی و معرفی کسب‌وکار', vars:[
-          ['CRP-01','Classic Corporate'],['CRP-02','Full Visual Corporate'],['CRP-03','Modern / Technology'],['CRP-04','Product / Industrial']
+        {id:'corporate', title:'شرکتی', fa:'شرکتی', desc:'سایت‌های شرکتی و معرفی کسب‌وکار', vars:[
+          ['CRP-01','شرکتی کلاسیک'],['CRP-02','شرکتی تصویری'],['CRP-03','شرکتی مدرن و فناوری'],['CRP-04','محصول و صنعتی']
         ]},
-        {id:'services', title:'Services', fa:'خدماتی', desc:'سایت‌های خدماتی و حرفه‌ای', vars:[
-          ['SRV-01','Service Classic'],['SRV-02','Service Visual'],['SRV-03','Service Request'],['SRV-04','Professional Service']
+        {id:'services', title:'خدماتی', fa:'خدماتی', desc:'سایت‌های خدماتی و حرفه‌ای', vars:[
+          ['SRV-01','خدماتی کلاسیک'],['SRV-02','خدماتی تصویری'],['SRV-03','خدماتی با درخواست خدمت'],['SRV-04','خدمات حرفه‌ای']
         ]},
-        {id:'engineering', title:'Engineering', fa:'مهندسی و پیمانکاری', desc:'مهندسی، پیمانکاری، مشاوره و پروژه', vars:[
-          ['ENG-01','Engineering Corporate'],['ENG-02','Contractor / Construction'],['ENG-03','Consultant / Architecture'],['ENG-04','Project Showcase'],['ENG-05','Modern Engineering']
+        {id:'engineering', title:'مهندسی و پیمانکاری', fa:'مهندسی و پیمانکاری', desc:'مهندسی، پیمانکاری، مشاوره و پروژه', vars:[
+          ['ENG-01','شرکتی مهندسی'],['ENG-02','پیمانکاری و ساخت‌وساز'],['ENG-03','مشاوره و معماری'],['ENG-04','نمایش پروژه‌ها'],['ENG-05','مهندسی مدرن']
         ]},
-        {id:'medical', title:'Medical', fa:'پزشکی', desc:'پزشک، کلینیک، دندانپزشکی و خدمات درمانی', vars:[
-          ['MED-01','Doctor / Personal'],['MED-02','Clinic'],['MED-03','Dental / Beauty'],['MED-04','Medical Modern']
+        {id:'medical', title:'پزشکی', fa:'پزشکی', desc:'پزشک، کلینیک، دندانپزشکی و خدمات درمانی', vars:[
+          ['MED-01','پزشک و معرفی شخصی'],['MED-02','کلینیک'],['MED-03','دندانپزشکی و زیبایی'],['MED-04','پزشکی مدرن']
         ]},
-        {id:'real-estate', title:'Real Estate', fa:'املاک', desc:'دفاتر املاک، آگهی و پروژه‌های ملکی', vars:[
-          ['REA-01','Real Estate Office'],['REA-02','Property Listings'],['REA-03','Property Showcase'],['REA-04','Developer / Project']
+        {id:'real-estate', title:'املاک', fa:'املاک', desc:'دفاتر املاک، آگهی و پروژه‌های ملکی', vars:[
+          ['REA-01','دفتر املاک'],['REA-02','فهرست و آگهی املاک'],['REA-03','معرفی پروژه‌های ملکی'],['REA-04','سازنده و پروژه']
         ]},
-        {id:'restaurant', title:'Restaurant', fa:'رستوران و غذا', desc:'رستوران، کافه، منو و کسب‌وکار غذایی', vars:[
-          ['RST-01','Restaurant Classic'],['RST-02','Cafe / Lifestyle'],['RST-03','Menu Focus'],['RST-04','Premium / Luxury'],['RST-05','Food Business / Catering']
+        {id:'restaurant', title:'رستوران و غذا', fa:'رستوران و غذا', desc:'رستوران، کافه، منو و کسب‌وکار غذایی', vars:[
+          ['RST-01','رستوران کلاسیک'],['RST-02','کافه و سبک زندگی'],['RST-03','تمرکز بر منو'],['RST-04','لوکس و ویژه'],['RST-05','کسب‌وکار غذایی و تهیه غذا']
         ]},
-        {id:'education', title:'Education', fa:'آموزش', desc:'آموزشگاه، مدرس، دوره و آکادمی', vars:[
-          ['EDU-01','Academy Classic'],['EDU-02','Online Courses'],['EDU-03','Instructor / Personal Teacher'],['EDU-04','School / Institute'],['EDU-05','Professional Academy']
+        {id:'education', title:'آموزش', fa:'آموزش', desc:'آموزشگاه، مدرس، دوره و آکادمی', vars:[
+          ['EDU-01','آکادمی کلاسیک'],['EDU-02','دوره‌های آنلاین'],['EDU-03','مدرس و معرفی شخصی'],['EDU-04','مدرسه و آموزشگاه'],['EDU-05','آکادمی تخصصی']
         ]},
-        {id:'personal', title:'Personal', fa:'شخصی و برند شخصی', desc:'پروفایل، رزومه، مشاور و فریلنسر', vars:[
-          ['PER-01','Personal Profile'],['PER-02','Personal Brand'],['PER-03','Freelancer / Consultant'],['PER-04','Resume / CV']
+        {id:'personal', title:'شخصی و برند شخصی', fa:'شخصی و برند شخصی', desc:'پروفایل، رزومه، مشاور و فریلنسر', vars:[
+          ['PER-01','پروفایل شخصی'],['PER-02','برند شخصی'],['PER-03','فریلنسر و مشاور'],['PER-04','رزومه و سوابق']
         ]},
-        {id:'legal-financial', title:'Legal / Financial', fa:'حقوقی و مالی', desc:'دفاتر حقوقی، مشاوره و خدمات مالی', vars:[
-          ['LAF-01','Professional Office'],['LAF-02','Lawyer / Consultant'],['LAF-03','Financial / Accounting'],['LAF-04','Corporate Advisory']
+        {id:'legal-financial', title:'حقوقی و مالی', fa:'حقوقی و مالی', desc:'دفاتر حقوقی، مشاوره و خدمات مالی', vars:[
+          ['LAF-01','دفتر حرفه‌ای'],['LAF-02','وکیل و مشاور'],['LAF-03','مالی و حسابداری'],['LAF-04','مشاوره کسب‌وکار']
         ]},
-        {id:'content-magazine', title:'Content / Magazine', fa:'محتوا و مجله', desc:'مجله، رسانه، اخبار و وبلاگ', vars:[
-          ['CNT-01','Magazine Classic'],['CNT-02','News / Media'],['CNT-03','Editorial / Premium'],['CNT-04','Knowledge / Blog']
+        {id:'content-magazine', title:'محتوا و مجله', fa:'محتوا و مجله', desc:'مجله، رسانه، اخبار و وبلاگ', vars:[
+          ['CNT-01','مجله کلاسیک'],['CNT-02','خبر و رسانه'],['CNT-03','تحریریه و ویژه'],['CNT-04','دانش و وبلاگ']
         ]},
-        {id:'portfolio', title:'Portfolio', fa:'نمونه‌کار', desc:'نمونه‌کار خلاقانه و حرفه‌ای', vars:[
-          ['POR-01','Creative Portfolio'],['POR-02','Professional Portfolio'],['POR-03','Project Showcase']
+        {id:'portfolio', title:'نمونه‌کار', fa:'نمونه‌کار', desc:'نمونه‌کار خلاقانه و حرفه‌ای', vars:[
+          ['POR-01','نمونه‌کار خلاقانه'],['POR-02','نمونه‌کار حرفه‌ای'],['POR-03','معرفی پروژه‌ها']
         ]},
-        {id:'events', title:'Events', fa:'رویداد', desc:'همایش، نمایشگاه و رویداد', vars:[
-          ['EVT-01','Event Classic'],['EVT-02','Event Visual'],['EVT-03','Event / Exhibition']
+        {id:'events', title:'رویداد', fa:'رویداد', desc:'همایش، نمایشگاه و رویداد', vars:[
+          ['EVT-01','رویداد کلاسیک'],['EVT-02','رویداد تصویری'],['EVT-03','همایش و نمایشگاه']
         ]}
       ],
       store: [
-        {id:'ecommerce', title:'Ecommerce', fa:'فروشگاهی', desc:'فروش آنلاین، محصول، سفارش و سبد خرید', vars:[
-          ['ECM-01','General Store'],['ECM-02','Product Focus'],['ECM-03','Brand Store'],['ECM-04','Fashion / Visual'],['ECM-05','Catalog / B2B']
+        {id:'ecommerce', title:'فروشگاهی', fa:'فروشگاهی', desc:'فروش آنلاین، محصول، سفارش و سبد خرید', vars:[
+          ['ECM-01','فروشگاه عمومی'],['ECM-02','محوریت محصول'],['ECM-03','فروشگاه برند'],['ECM-04','فروشگاه مد و تصویرمحور'],['ECM-05','کاتالوگ و فروش سازمانی']
         ]}
       ]
     };
@@ -192,8 +188,8 @@
     summaryType.textContent = typeTitle || 'نوع سایت از مرحله قبل انتخاب نشده';
     document.getElementById('type-description').textContent =
       type === 'store'
-        ? 'برای سایت فروشگاهی، ابتدا زمینه فروشگاهی و سپس قالب مناسب آن را انتخاب کنید.'
-        : 'برای سایت محتوایی، ابتدا زمینه موردنظر و سپس قالب مناسب آن را انتخاب کنید.';
+        ? 'برای سایت فروشگاهی، ابتدا زمینه فروشگاهی و سپس واریانت مناسب آن را انتخاب کنید.'
+        : 'برای سایت محتوایی، ابتدا زمینه موردنظر و سپس واریانت مناسب آن را انتخاب کنید.';
 
     let selectedFamily = null;
     let selectedVariation = null;
@@ -210,7 +206,7 @@
 
     function renderVariations() {
       if (!selectedFamily) {
-        variationRows.innerHTML = '<tr><td colspan="3" class="empty-state">ابتدا یک زمینه را انتخاب کنید.</td></tr>';
+        variationRows.innerHTML = '<tr><td colspan="5" class="empty-state">ابتدا یک زمینه را انتخاب کنید.</td></tr>';
         return;
       }
       variationRows.innerHTML = selectedFamily.vars.map(function(v) {
@@ -218,10 +214,10 @@
           '<td class="select-cell"><label><input type="radio" name="variation" value="' + v[0] + '"><span class="custom-radio"></span></label></td>' +
           '<td class="variation-code"><strong>' + v[0] + '</strong></td>' +
           '<td>' + v[1] + '</td>' +
-          '<td class="variation-price">۱۲,۰۰۰,۰۰۰ تومان</td>' +
+          '<td class="variation-price">رایگان</td>' +
           '<td class="variation-time">۹ روز کاری</td></tr>';
       }).join('');
-      variationHint.textContent = 'قالب‌های ' + selectedFamily.fa + ' نمایش داده شد؛ یکی را انتخاب کنید.';
+      variationHint.textContent = 'واریانت‌های ' + selectedFamily.fa + ' نمایش داده شد؛ یکی را انتخاب کنید.';
     }
 
     familyRows.addEventListener('change', function(e) {
@@ -234,7 +230,7 @@
       renderVariations();
       summaryTemplate.textContent = 'انتخاب نشده';
       previewTitle.textContent = selectedFamily.fa;
-      previewDetail.textContent = 'اکنون یکی از قالب‌های این زمینه را انتخاب کنید.';
+      previewDetail.textContent = 'اکنون یکی از واریانت‌های این زمینه را انتخاب کنید.';
       nextButton.disabled = true;
       note.textContent = '';
       localStorage.setItem('krf_dynamic_family', selectedFamily.id);
@@ -248,9 +244,9 @@
       });
       summaryTemplate.textContent = selectedVariation[0] + ' — ' + selectedVariation[1];
       previewTitle.textContent = selectedVariation[1];
-      previewDetail.textContent = 'کد قالب: ' + selectedVariation[0] + ' | زمینه: ' + selectedFamily.fa + ' | قیمت: ۱۲,۰۰۰,۰۰۰ تومان | زمان آماده‌سازی برآوردی: ۹ روز کاری';
+      previewDetail.textContent = 'شناسه واریانت: ' + selectedVariation[0] + ' | زمینه: ' + selectedFamily.fa + ' | هزینه واریانت: رایگان | زمان آماده‌سازی برآوردی: ۹ روز کاری';
       nextButton.disabled = false;
-      note.textContent = 'قالب انتخاب شد؛ ۲ میلیون تومان به قیمت پایه و ۲ روز کاری به زمان پایه اضافه شد.';
+      note.textContent = 'واریانت قالب انتخاب شد و هزینه جداگانه‌ای ندارد؛ هزینه طراحی اولیه سایت ۱۰ میلیون تومان است.';
       localStorage.setItem('krf_dynamic_variation_code', selectedVariation[0]);
       localStorage.setItem('krf_dynamic_variation_title', selectedVariation[1]);
     });
