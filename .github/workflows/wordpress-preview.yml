@@ -34,10 +34,11 @@ jobs:
         run: |
           rm -rf _site
           mkdir -p _site
-          cp -R _private-wp/wp-preview/. _site/.
-          mkdir -p _site/assets/images
-          cp _private-wp/assets/images/hero-robots.jpg _site/assets/images/hero-robots.jpg
-          sed -i 's#../assets/images/hero-robots.jpg#assets/images/hero-robots.jpg#g' _site/style.css
+          cp -R theme-preview/. _site/.
+          mkdir -p _site/wp-preview/assets/images
+          cp -R _private-wp/wp-preview/. _site/wp-preview/.
+          cp _private-wp/assets/images/hero-robots.jpg _site/wp-preview/assets/images/hero-robots.jpg
+          sed -i 's#../assets/images/hero-robots.jpg#assets/images/hero-robots.jpg#g' _site/wp-preview/style.css
           rm -rf _private-wp
 
       - name: Setup Pages
