@@ -22,13 +22,11 @@
 .template-table tbody tr:hover td{background:#f8fbfd}
 .template-table tbody tr.active td{background:#f1f7ff}
 .template-table tbody tr.active td:first-child{box-shadow:inset -4px 0 0 var(--accent)}
-.col-code{width:15%}.col-scope-1,.col-scope-2{width:14%}.col-activity-1,.col-activity-2{width:13%}.col-buy-1{width:13%}.col-buy-2{width:11%}
+.col-code{width:15%}.col-scope-1,.col-scope-2,.col-scope-3{width:12%}.col-activity-1,.col-activity-2{width:12%}.col-buy{width:13%}
 .code-cell{text-align:center;background:#fbfcfd}
 .code-cell strong{display:block;color:#17324d;font-size:.77rem;direction:ltr}
 .code-cell span{display:block;margin-top:4px;color:#788c9e;font-size:.68rem}
-.price-cell{text-align:center;font-weight:800;color:#17324d!important;white-space:nowrap}
-.row-buy{display:inline-flex;min-width:82px;min-height:58px;flex-direction:column;align-items:center;justify-content:center;gap:1px;border:1px solid #398a61;border-radius:10px;background:#e6f5eb;color:#21804b;text-decoration:underline;font-size:.78rem;font-weight:800;line-height:1.55;transition:.2s}
-.row-buy::after{content:"........ تومان";text-decoration:underline;font-size:.67rem;font-weight:700;color:#276c45}
+.buy-cell{text-align:center;background:#fbfefb}.row-buy{display:inline-flex;min-width:104px;min-height:64px;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:1px solid #398a61;border-radius:10px;background:#e6f5eb;color:#21804b;text-decoration:none;font-size:.82rem;font-weight:800;line-height:1.55;transition:.2s}.row-buy strong{text-decoration:underline}.row-buy span{font-size:.68rem;font-weight:700;color:#276c45;text-decoration:underline}
 .row-buy:hover{transform:translateY(-1px);background:#daf0e2}
 .row-buy.disabled{cursor:not-allowed;transform:none}
 .selected-template-image-box{margin-top:22px;border:1px solid #c9d7e3;border-radius:16px;overflow:hidden;background:#fff}
