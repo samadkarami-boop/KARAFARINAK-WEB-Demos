@@ -33,16 +33,16 @@
 .code-cell strong{display:block;color:#17324d;font-size:.77rem;direction:ltr}
 .code-cell span{display:block;margin-top:4px;color:#788c9e;font-size:.68rem}
 .buy-cell{text-align:center;background:linear-gradient(145deg,#f8f4e8,#f1ead8)}
-.row-buy{display:inline-flex;min-width:104px;min-height:64px;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:1px solid #17613a;border-radius:10px;background:#197a45;color:#fff;text-decoration:none;font-size:.82rem;font-weight:800;line-height:1.55;transition:.2s;cursor:pointer}
+.row-buy{display:inline-flex;min-width:104px;min-height:64px;flex-direction:column;align-items:center;justify-content:center;gap:2px;border:1px solid #277548;border-radius:10px;background:#2f8b57;color:#fff;text-decoration:none;font-size:.82rem;font-weight:800;line-height:1.55;transition:.2s;cursor:pointer}
 .row-buy strong{text-decoration:underline}
 .row-buy span{font-size:.68rem;font-weight:700;color:#fff;text-decoration:underline}
-.row-buy:hover{transform:translateY(-1px);background:#126b3b}
+.row-buy:hover{transform:translateY(-1px);background:#287b4f}
 .selected-template-image-box{margin-top:22px;border:1px solid #c9d7e3;border-radius:16px;overflow:hidden;background:#fff}
 .preview-section-title{margin:0;padding:14px 18px;border-bottom:1px solid #d6e1ea;background:#e4edf4;color:#294963;font-size:1rem;font-weight:800;text-align:center}
 .large-preview-frame{min-height:470px;display:flex;align-items:center;justify-content:center;background:linear-gradient(145deg,#f8f4e8,#f1ead8);overflow:hidden}
 .large-preview-frame img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain}
 .template-features{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:16px auto 0;max-width:900px}
-.template-features span{padding:7px 13px;border:1px solid #17613a;border-radius:999px;background:#197a45;color:#fff;font-size:.72rem;font-weight:600}
+.template-features span{padding:7px 13px;border:1px solid #277548;border-radius:999px;background:#2f8b57;color:#fff;font-size:.72rem;font-weight:600}
 @media(max-width:700px){
   .static-template-box{padding:12px}
   .static-table-title{padding:4px 4px 14px}
