@@ -170,9 +170,10 @@
 .preview-placeholder{width:min(620px,100%);padding:34px 26px;border:1px dashed #b9cad8;border-radius:16px;background:rgba(255,255,255,.56);text-align:center}
 .preview-placeholder strong{display:block;color:#294963;font-size:1rem;margin-bottom:8px}
 .preview-placeholder span{display:block;color:#667c92;font-size:.78rem;line-height:2}
-.dynamic-template-summary{grid-template-columns:repeat(6,1fr)}
+.dynamic-template-summary{grid-template-columns:repeat(4,1fr)}
+.variation-price,.variation-time{font-weight:800;color:#294963}
 .dynamic-template-summary>div{min-height:86px}
-@media(max-width:900px){.dynamic-template-summary{grid-template-columns:repeat(3,1fr)}}
+@media(max-width:900px){.dynamic-template-summary{grid-template-columns:repeat(2,1fr)}}
 @media(max-width:700px){
   .dynamic-template-box{padding:16px}
   .dynamic-template-section-head{align-items:flex-start;flex-direction:column;gap:4px}
