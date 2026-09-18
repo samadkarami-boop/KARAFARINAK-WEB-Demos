@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>انتخاب قالب سایت دینامیک | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260919-0001">
+  <link rel="stylesheet" href="style.css?v=20260919-0015">
 </head>
 <body class="dynamic-config-page">
   <header class="site-header">
@@ -16,20 +16,239 @@
       <a class="cart" href="cart.html"><span class="cart-icon">🛒</span> سبد خرید <span class="cart-count">۰</span></a>
     </nav>
   </header>
+
   <main class="dynamic-config-shell">
     <section class="dynamic-config">
       <div class="dynamic-config-head">
         <span class="dynamic-step">مرحله ۲</span>
         <h1>انتخاب قالب سایت</h1>
-        <p>قالب‌های متناسب با نوع سایت انتخاب‌شده در این مرحله نمایش داده خواهند شد.</p>
+        <p id="type-description">ابتدا زمینه و سپس قالب مناسب سایت خود را انتخاب کنید.</p>
       </div>
+
+      <section class="dynamic-template-box">
+        <div class="dynamic-template-section-head">
+          <h2>۱. انتخاب زمینه قالب</h2>
+          <span id="family-hint">یک زمینه را انتخاب کنید.</span>
+        </div>
+        <div class="dynamic-family-table-wrap">
+          <table class="dynamic-family-table">
+            <thead>
+              <tr>
+                <th>انتخاب</th>
+                <th>زمینه</th>
+                <th>دامنه کاربرد</th>
+                <th>تعداد قالب</th>
+              </tr>
+            </thead>
+            <tbody id="family-rows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="dynamic-template-box dynamic-variation-box">
+        <div class="dynamic-template-section-head">
+          <h2>۲. انتخاب قالب</h2>
+          <span id="variation-hint">پس از انتخاب زمینه، قالب‌های آن نمایش داده می‌شوند.</span>
+        </div>
+        <div class="dynamic-variation-table-wrap">
+          <table class="dynamic-variation-table">
+            <thead>
+              <tr>
+                <th>انتخاب</th>
+                <th>کد قالب</th>
+                <th>عنوان قالب</th>
+              </tr>
+            </thead>
+            <tbody id="variation-rows">
+              <tr><td colspan="3" class="empty-state">ابتدا یک زمینه را انتخاب کنید.</td></tr>
+            </tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="dynamic-template-preview" id="template-preview">
+        <div class="dynamic-template-preview-head">پیش‌نمایش قالب انتخابی</div>
+        <div class="dynamic-template-preview-body">
+          <div class="preview-placeholder">
+            <strong id="preview-title">هنوز قالبی انتخاب نشده است</strong>
+            <span id="preview-detail">پس از انتخاب قالب، مشخصات آن در این بخش نمایش داده می‌شود.</span>
+          </div>
+        </div>
+      </section>
+
+      <section class="dynamic-summary dynamic-template-summary">
+        <div>
+          <span>نوع سایت</span>
+          <strong id="summary-type">انتخاب نشده</strong>
+        </div>
+        <div>
+          <span>قالب انتخاب‌شده</span>
+          <strong id="summary-template">انتخاب نشده</strong>
+        </div>
+        <div>
+          <span>قیمت پایه</span>
+          <strong id="summary-price">۱۰,۰۰۰,۰۰۰ تومان</strong>
+        </div>
+        <div>
+          <span>افزایش قیمت قالب</span>
+          <strong>فعلاً تعیین نشده</strong>
+        </div>
+        <div>
+          <span>زمان پایه</span>
+          <strong>حداقل ۷ روز کاری</strong>
+        </div>
+        <div>
+          <span>زمان اضافه قالب</span>
+          <strong>فعلاً تعیین نشده</strong>
+        </div>
+      </section>
+
+      <div class="dynamic-config-actions">
+        <a class="dynamic-back-btn" href="dynamic-site-type.html">→ بازگشت به انتخاب نوع سایت</a>
+        <button class="dynamic-next-btn dynamic-config-next" id="template-next" type="button" disabled>ادامه به انتخاب امکانات ←</button>
+      </div>
+      <p class="dynamic-config-note" id="template-note" aria-live="polite"></p>
     </section>
   </main>
+
   <footer class="site-footer">
     <div class="container footer-inner">
       <span class="footer-brand">کارآفرینک / KARAFARINAK</span>
       <span>© کارآفرینک</span>
     </div>
   </footer>
+
+  <script>
+    const families = {
+      content: [
+        {id:'corporate', title:'Corporate', fa:'شرکتی', desc:'سایت‌های شرکتی و معرفی کسب‌وکار', vars:[
+          ['CRP-01','Classic Corporate'],['CRP-02','Full Visual Corporate'],['CRP-03','Modern / Technology'],['CRP-04','Product / Industrial']
+        ]},
+        {id:'services', title:'Services', fa:'خدماتی', desc:'سایت‌های خدماتی و حرفه‌ای', vars:[
+          ['SRV-01','Service Classic'],['SRV-02','Service Visual'],['SRV-03','Service Request'],['SRV-04','Professional Service']
+        ]},
+        {id:'engineering', title:'Engineering', fa:'مهندسی و پیمانکاری', desc:'مهندسی، پیمانکاری، مشاوره و پروژه', vars:[
+          ['ENG-01','Engineering Corporate'],['ENG-02','Contractor / Construction'],['ENG-03','Consultant / Architecture'],['ENG-04','Project Showcase'],['ENG-05','Modern Engineering']
+        ]},
+        {id:'medical', title:'Medical', fa:'پزشکی', desc:'پزشک، کلینیک، دندانپزشکی و خدمات درمانی', vars:[
+          ['MED-01','Doctor / Personal'],['MED-02','Clinic'],['MED-03','Dental / Beauty'],['MED-04','Medical Modern']
+        ]},
+        {id:'real-estate', title:'Real Estate', fa:'املاک', desc:'دفاتر املاک، آگهی و پروژه‌های ملکی', vars:[
+          ['REA-01','Real Estate Office'],['REA-02','Property Listings'],['REA-03','Property Showcase'],['REA-04','Developer / Project']
+        ]},
+        {id:'restaurant', title:'Restaurant', fa:'رستوران و غذا', desc:'رستوران، کافه، منو و کسب‌وکار غذایی', vars:[
+          ['RST-01','Restaurant Classic'],['RST-02','Cafe / Lifestyle'],['RST-03','Menu Focus'],['RST-04','Premium / Luxury'],['RST-05','Food Business / Catering']
+        ]},
+        {id:'education', title:'Education', fa:'آموزش', desc:'آموزشگاه، مدرس، دوره و آکادمی', vars:[
+          ['EDU-01','Academy Classic'],['EDU-02','Online Courses'],['EDU-03','Instructor / Personal Teacher'],['EDU-04','School / Institute'],['EDU-05','Professional Academy']
+        ]},
+        {id:'personal', title:'Personal', fa:'شخصی و برند شخصی', desc:'پروفایل، رزومه، مشاور و فریلنسر', vars:[
+          ['PER-01','Personal Profile'],['PER-02','Personal Brand'],['PER-03','Freelancer / Consultant'],['PER-04','Resume / CV']
+        ]},
+        {id:'legal-financial', title:'Legal / Financial', fa:'حقوقی و مالی', desc:'دفاتر حقوقی، مشاوره و خدمات مالی', vars:[
+          ['LAF-01','Professional Office'],['LAF-02','Lawyer / Consultant'],['LAF-03','Financial / Accounting'],['LAF-04','Corporate Advisory']
+        ]},
+        {id:'content-magazine', title:'Content / Magazine', fa:'محتوا و مجله', desc:'مجله، رسانه، اخبار و وبلاگ', vars:[
+          ['CNT-01','Magazine Classic'],['CNT-02','News / Media'],['CNT-03','Editorial / Premium'],['CNT-04','Knowledge / Blog']
+        ]},
+        {id:'portfolio', title:'Portfolio', fa:'نمونه‌کار', desc:'نمونه‌کار خلاقانه و حرفه‌ای', vars:[
+          ['POR-01','Creative Portfolio'],['POR-02','Professional Portfolio'],['POR-03','Project Showcase']
+        ]},
+        {id:'events', title:'Events', fa:'رویداد', desc:'همایش، نمایشگاه و رویداد', vars:[
+          ['EVT-01','Event Classic'],['EVT-02','Event Visual'],['EVT-03','Event / Exhibition']
+        ]}
+      ],
+      store: [
+        {id:'ecommerce', title:'Ecommerce', fa:'فروشگاهی', desc:'فروش آنلاین، محصول، سفارش و سبد خرید', vars:[
+          ['ECM-01','General Store'],['ECM-02','Product Focus'],['ECM-03','Brand Store'],['ECM-04','Fashion / Visual'],['ECM-05','Catalog / B2B']
+        ]}
+      ]
+    };
+
+    const type = localStorage.getItem('krf_dynamic_site_type') || '';
+    const typeTitle = localStorage.getItem('krf_dynamic_site_type_title') || '';
+    const activeFamilies = type === 'store' ? families.store : families.content;
+
+    const familyRows = document.getElementById('family-rows');
+    const variationRows = document.getElementById('variation-rows');
+    const variationHint = document.getElementById('variation-hint');
+    const summaryType = document.getElementById('summary-type');
+    const summaryTemplate = document.getElementById('summary-template');
+    const previewTitle = document.getElementById('preview-title');
+    const previewDetail = document.getElementById('preview-detail');
+    const nextButton = document.getElementById('template-next');
+    const note = document.getElementById('template-note');
+
+    summaryType.textContent = typeTitle || 'نوع سایت از مرحله قبل انتخاب نشده';
+    document.getElementById('type-description').textContent =
+      type === 'store'
+        ? 'برای سایت فروشگاهی، ابتدا زمینه فروشگاهی و سپس قالب مناسب آن را انتخاب کنید.'
+        : 'برای سایت محتوایی، ابتدا زمینه موردنظر و سپس قالب مناسب آن را انتخاب کنید.';
+
+    let selectedFamily = null;
+    let selectedVariation = null;
+
+    function renderFamilies() {
+      familyRows.innerHTML = activeFamilies.map(function(f) {
+        return '<tr class="family-row" data-family="' + f.id + '">' +
+          '<td class="select-cell"><label><input type="radio" name="family" value="' + f.id + '"><span class="custom-radio"></span></label></td>' +
+          '<td><strong>' + f.fa + '</strong><small>' + f.title + '</small></td>' +
+          '<td>' + f.desc + '</td>' +
+          '<td>' + f.vars.length + '</td></tr>';
+      }).join('');
+    }
+
+    function renderVariations() {
+      if (!selectedFamily) {
+        variationRows.innerHTML = '<tr><td colspan="3" class="empty-state">ابتدا یک زمینه را انتخاب کنید.</td></tr>';
+        return;
+      }
+      variationRows.innerHTML = selectedFamily.vars.map(function(v) {
+        return '<tr class="variation-row" data-code="' + v[0] + '">' +
+          '<td class="select-cell"><label><input type="radio" name="variation" value="' + v[0] + '"><span class="custom-radio"></span></label></td>' +
+          '<td class="variation-code"><strong>' + v[0] + '</strong></td>' +
+          '<td>' + v[1] + '</td></tr>';
+      }).join('');
+      variationHint.textContent = 'قالب‌های ' + selectedFamily.fa + ' نمایش داده شد؛ یکی را انتخاب کنید.';
+    }
+
+    familyRows.addEventListener('change', function(e) {
+      if (!e.target.matches('input[name="family"]')) return;
+      selectedFamily = activeFamilies.find(function(f) { return f.id === e.target.value; });
+      selectedVariation = null;
+      document.querySelectorAll('.family-row').forEach(function(row) {
+        row.classList.toggle('selected', row.dataset.family === selectedFamily.id);
+      });
+      renderVariations();
+      summaryTemplate.textContent = 'انتخاب نشده';
+      previewTitle.textContent = selectedFamily.fa;
+      previewDetail.textContent = 'اکنون یکی از قالب‌های این زمینه را انتخاب کنید.';
+      nextButton.disabled = true;
+      note.textContent = '';
+      localStorage.setItem('krf_dynamic_family', selectedFamily.id);
+    });
+
+    variationRows.addEventListener('change', function(e) {
+      if (!e.target.matches('input[name="variation"]')) return;
+      selectedVariation = selectedFamily.vars.find(function(v) { return v[0] === e.target.value; });
+      document.querySelectorAll('.variation-row').forEach(function(row) {
+        row.classList.toggle('selected', row.dataset.code === selectedVariation[0]);
+      });
+      summaryTemplate.textContent = selectedVariation[0] + ' — ' + selectedVariation[1];
+      previewTitle.textContent = selectedVariation[1];
+      previewDetail.textContent = 'کد قالب: ' + selectedVariation[0] + ' | زمینه: ' + selectedFamily.fa + ' | قیمت افزایش‌یافته و زمان اضافه این قالب فعلاً برای برآورد اولیه تعیین نشده است.';
+      nextButton.disabled = false;
+      note.textContent = 'قالب انتخاب شد.';
+      localStorage.setItem('krf_dynamic_variation_code', selectedVariation[0]);
+      localStorage.setItem('krf_dynamic_variation_title', selectedVariation[1]);
+    });
+
+    nextButton.addEventListener('click', function() {
+      if (!selectedVariation) return;
+      window.location.href = 'dynamic-features.html';
+    });
+
+    renderFamilies();
+  </script>
 </body>
 </html>
