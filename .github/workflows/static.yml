@@ -1,5 +1,5 @@
-# Deploy both approved and WordPress-derived previews to GitHub Pages
-name: Deploy static previews to Pages
+# Deploy the approved static theme preview to GitHub Pages
+name: Deploy static preview to Pages
 
 on:
   push:
@@ -31,10 +31,8 @@ jobs:
       - name: Build preview site
         run: |
           rm -rf _site
-          mkdir -p _site/wp-preview _site/theme-preview
+          mkdir -p _site
           cp -R theme-preview/. _site/.
-          cp -R theme-preview/. _site/theme-preview/.
-          cp -R wp-preview/. _site/wp-preview/.
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
