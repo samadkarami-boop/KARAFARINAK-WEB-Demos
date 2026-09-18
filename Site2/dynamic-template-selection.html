@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>انتخاب قالب سایت دینامیک | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260919-0015">
+  <link rel="stylesheet" href="style.css?v=20260919-0100">
 </head>
 <body class="dynamic-config-page">
   <header class="site-header">
@@ -28,7 +28,7 @@
       <section class="dynamic-template-box">
         <div class="dynamic-template-section-head">
           <h2>۱. انتخاب زمینه قالب</h2>
-          <span id="family-hint">یک زمینه را انتخاب کنید.</span>
+          <span id="family-hint">یکی از زمینه‌های سایت را انتخاب کنید.</span>
         </div>
         <div class="dynamic-family-table-wrap">
           <table class="dynamic-family-table">
@@ -57,10 +57,12 @@
                 <th>انتخاب</th>
                 <th>کد قالب</th>
                 <th>عنوان قالب</th>
+                <th>قیمت</th>
+                <th>زمان</th>
               </tr>
             </thead>
             <tbody id="variation-rows">
-              <tr><td colspan="3" class="empty-state">ابتدا یک زمینه را انتخاب کنید.</td></tr>
+              <tr><td colspan="5" class="empty-state">ابتدا یک زمینه را انتخاب کنید.</td></tr>
             </tbody>
           </table>
         </div>
@@ -91,7 +93,7 @@
         </div>
         <div>
           <span>افزایش قیمت قالب</span>
-          <strong>فعلاً تعیین نشده</strong>
+          <strong>۲,۰۰۰,۰۰۰ تومان</strong>
         </div>
         <div>
           <span>زمان پایه</span>
@@ -99,7 +101,7 @@
         </div>
         <div>
           <span>زمان اضافه قالب</span>
-          <strong>فعلاً تعیین نشده</strong>
+          <strong>۲ روز کاری</strong>
         </div>
       </section>
 
@@ -207,7 +209,9 @@
         return '<tr class="variation-row" data-code="' + v[0] + '">' +
           '<td class="select-cell"><label><input type="radio" name="variation" value="' + v[0] + '"><span class="custom-radio"></span></label></td>' +
           '<td class="variation-code"><strong>' + v[0] + '</strong></td>' +
-          '<td>' + v[1] + '</td></tr>';
+          '<td>' + v[1] + '</td>' +
+          '<td class="variation-price">۱۲,۰۰۰,۰۰۰ تومان</td>' +
+          '<td class="variation-time">۹ روز کاری</td></tr>';
       }).join('');
       variationHint.textContent = 'قالب‌های ' + selectedFamily.fa + ' نمایش داده شد؛ یکی را انتخاب کنید.';
     }
@@ -236,9 +240,9 @@
       });
       summaryTemplate.textContent = selectedVariation[0] + ' — ' + selectedVariation[1];
       previewTitle.textContent = selectedVariation[1];
-      previewDetail.textContent = 'کد قالب: ' + selectedVariation[0] + ' | زمینه: ' + selectedFamily.fa + ' | قیمت افزایش‌یافته و زمان اضافه این قالب فعلاً برای برآورد اولیه تعیین نشده است.';
+      previewDetail.textContent = 'کد قالب: ' + selectedVariation[0] + ' | زمینه: ' + selectedFamily.fa + ' | قیمت: ۱۲,۰۰۰,۰۰۰ تومان | زمان آماده‌سازی برآوردی: ۹ روز کاری';
       nextButton.disabled = false;
-      note.textContent = 'قالب انتخاب شد.';
+      note.textContent = 'قالب انتخاب شد؛ ۲ میلیون تومان به قیمت پایه و ۲ روز کاری به زمان پایه اضافه شد.';
       localStorage.setItem('krf_dynamic_variation_code', selectedVariation[0]);
       localStorage.setItem('krf_dynamic_variation_title', selectedVariation[1]);
     });
