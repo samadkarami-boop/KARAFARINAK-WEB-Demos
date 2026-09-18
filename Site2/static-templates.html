@@ -19,7 +19,6 @@
 
 <main class="page container static-templates-page">
   <section class="page-head center templates-landing-head">
-    <span class="eyebrow">STATIC TEMPLATES</span>
     <h1>قالب‌های آماده استاتیک</h1>
     <p>یک قالب را از جدول انتخاب کنید؛ پیش‌نمایش همان قالب در کادر پایین نمایش داده می‌شود.</p>
   </section>
@@ -88,19 +87,7 @@
     </div>
 
     <section class="selected-template-image-box" aria-live="polite">
-      <div class="selected-template-heading">
-        <div>
-          <span class="template-code" id="preview-code">KRF-WEB-001</span>
-          <h2 id="preview-title">قالب شرکتی</h2>
-        </div>
-        <span class="selected-note">برای مشاهده پیش‌نمایش، ردیف قالب را انتخاب کنید.</span>
-      </div>
-
       <div class="large-preview-frame">
-        <div id="preview-placeholder" class="preview-placeholder">
-          <strong>کادر تصویر پیش‌نمایش</strong>
-          <span>تصویر هر قالب بعداً از هاست کارآفرینک در همین کادر قرار می‌گیرد.</span>
-        </div>
         <img id="template-preview-image" src="" alt="" hidden>
       </div>
     </section>
@@ -132,9 +119,6 @@ function showTemplate(id) {
   const item = templates[id];
   rows.forEach(row => row.classList.toggle("active", row.dataset.template === id));
 
-  document.getElementById("preview-code").textContent = id;
-  document.getElementById("preview-title").textContent = item.title;
-
   const row = document.querySelector('[data-template="' + id + '"]');
   row.querySelector(".row-buy span").textContent = item.price;
   const buy = row.querySelector(".row-buy");
@@ -153,11 +137,9 @@ function showTemplate(id) {
     image.src = item.image;
     image.alt = "پیش‌نمایش " + item.title;
     image.hidden = false;
-    placeholder.hidden = true;
   } else {
     image.removeAttribute("src");
     image.hidden = true;
-    placeholder.hidden = false;
   }
 }
 
