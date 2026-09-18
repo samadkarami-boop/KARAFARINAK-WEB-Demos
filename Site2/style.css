@@ -69,13 +69,15 @@
 .dynamic-eyebrow{display:inline-block;margin-bottom:10px;color:#2868d8;font-size:.76rem;font-weight:800;letter-spacing:.14em}
 .dynamic-intro-head h1{margin:0 0 14px;color:#17324d;font-size:clamp(1.8rem,4vw,2.7rem);line-height:1.35}
 .dynamic-intro-head p{max-width:820px;margin:0 auto;color:#667c92;font-size:.98rem;line-height:2.1}
-.dynamic-sections{display:grid;gap:14px}
-.dynamic-section{padding:24px 26px;border:1px solid #d7e3ee;border-radius:18px;background:#f7fafc;box-shadow:0 14px 36px rgba(35,71,106,.09)}
+.dynamic-sections{padding:30px 34px;border:1px solid #cfdbe6;border-radius:22px;background:#fff;box-shadow:0 16px 40px rgba(35,71,106,.10)}
+.dynamic-terms-title{margin:0 0 24px;color:#294963;text-align:center;font-size:1.32rem;font-weight:800;line-height:1.7}
+.dynamic-section{padding:0 0 20px;margin:0 0 20px;border:0;border-bottom:1px solid #dfe7ee;background:transparent;box-shadow:none}
+.dynamic-section:last-child{padding-bottom:0;margin-bottom:0;border-bottom:0}
 .dynamic-section h2{margin:0 0 12px;color:#294963;font-size:1.05rem;line-height:1.7}
 .dynamic-section p{margin:0 0 10px;color:#526b80;font-size:.86rem;line-height:2.05}
 .dynamic-section p:last-child{margin-bottom:0}
 .dynamic-section strong{color:#17324d}
-.dynamic-acceptance{margin-top:18px;padding:26px;border:1px solid #cfdbe6;border-radius:20px;background:#ffffff;box-shadow:0 16px 38px rgba(35,71,106,.10)}
+.dynamic-acceptance{margin-top:18px;padding:26px;border:1px solid #cfdbe6;border-radius:20px;background:#f7fafc;box-shadow:0 16px 38px rgba(35,71,106,.10)}
 .dynamic-acceptance h2{margin:0 0 10px;color:#294963;text-align:center;font-size:1.25rem}
 .dynamic-acceptance>p{margin:0 auto 18px;max-width:850px;color:#526b80;text-align:center;font-size:.86rem;line-height:2.05}
 .dynamic-accept-check{display:flex;align-items:flex-start;gap:10px;padding:14px 16px;border:1px solid #d7e3ee;border-radius:14px;background:#f7fafc;color:#17324d;cursor:pointer;font-size:.86rem;line-height:1.9}
@@ -93,4 +95,6 @@
   .dynamic-section h2{font-size:.98rem}
   .dynamic-section p,.dynamic-acceptance>p,.dynamic-accept-check{font-size:.82rem}
   .dynamic-acceptance{padding:20px 16px}
+  .dynamic-sections{padding:22px 18px}
+  .dynamic-terms-title{font-size:1.08rem;margin-bottom:20px}
 }
