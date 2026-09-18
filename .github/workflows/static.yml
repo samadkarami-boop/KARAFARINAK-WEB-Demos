@@ -35,9 +35,7 @@ jobs:
           cp -R theme-preview/. _site/.
           rm -rf _site/Site2
           mkdir -p _site/Site2/Preview
-          cp -R Site2/. _site/Site2/Preview/.
-          rm -f _site/Site2/Preview/SITE2_REPORT.md
-          rm -f _site/Site2/Preview/.gitkeep
+          rsync -a --exclude='Preview' --exclude='SITE2_REPORT.md' Site2/ _site/Site2/Preview/
 
       - name: Upload artifact
         uses: actions/upload-pages-artifact@v3
