@@ -63,3 +63,5 @@ jobs:
         uses: actions/deploy-pages@v5
 
 # Clean trigger for a fresh Pages deployment
+
+# Refresh Pages deployment after Site2 style updates
