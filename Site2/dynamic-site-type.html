@@ -3,7 +3,103 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
-  <title>مرحله بعد | کارآفرینک</title>
+  <title>انتخاب نوع سایت دینامیک | کارآفرینک</title>
+  <link rel="stylesheet" href="style.css?v=20260919-0001">
 </head>
-<body></body>
+<body class="dynamic-config-page">
+  <header class="site-header">
+    <a class="brand" href="index.html"><span>کارآفرینک</span><small>KARAFARINAK</small></a>
+    <nav class="main-nav" aria-label="منوی اصلی">
+      <a href="index.html">خانه</a>
+      <a href="contact.html">تماس با ما</a>
+      <a href="about.html">درباره ما</a>
+      <a class="cart" href="cart.html"><span class="cart-icon">🛒</span> سبد خرید <span class="cart-count">۰</span></a>
+    </nav>
+  </header>
+
+  <main class="dynamic-config-shell">
+    <section class="dynamic-config">
+      <div class="dynamic-config-head">
+        <span class="dynamic-step">مرحله ۱</span>
+        <h1>انتخاب نوع سایت</h1>
+        <p>نوع سایت پایه خود را انتخاب کنید. قیمت پایه برای هر دو نوع یکسان است و امکانات و قالب در مراحل بعدی انتخاب می‌شوند.</p>
+      </div>
+
+      <section class="dynamic-type-box">
+        <div class="dynamic-type-grid">
+          <label class="dynamic-type-card">
+            <input type="radio" name="site-type" value="content" data-title="سایت محتوایی">
+            <span class="dynamic-type-card-body">
+              <strong>سایت محتوایی</strong>
+              <em>برای سایت‌های شرکتی، خدماتی، شخصی، حرفه‌ای، معرفی کسب‌وکار و ارائه محتوا</em>
+              <b>قیمت پایه: ۱۰,۰۰۰,۰۰۰ تومان</b>
+            </span>
+          </label>
+
+          <label class="dynamic-type-card">
+            <input type="radio" name="site-type" value="store" data-title="سایت فروشگاهی">
+            <span class="dynamic-type-card-body">
+              <strong>سایت فروشگاهی</strong>
+              <em>برای فروش محصولات، مدیریت سفارش‌ها، سبد خرید، پرداخت و امکانات مرتبط با فروش آنلاین</em>
+              <b>قیمت پایه: ۱۰,۰۰۰,۰۰۰ تومان</b>
+            </span>
+          </label>
+        </div>
+      </section>
+
+      <section class="dynamic-summary">
+        <div>
+          <span>نوع سایت انتخاب‌شده</span>
+          <strong id="selected-type">انتخاب نشده</strong>
+        </div>
+        <div>
+          <span>قیمت پایه</span>
+          <strong id="base-price">۱۰,۰۰۰,۰۰۰ تومان</strong>
+        </div>
+        <div>
+          <span>زمان پایه آماده‌سازی</span>
+          <strong>حداقل ۷ روز کاری</strong>
+        </div>
+      </section>
+
+      <div class="dynamic-config-actions">
+        <a class="dynamic-back-btn" href="dynamic-templates.html">→ بازگشت به شرایط و ضوابط</a>
+        <button class="dynamic-next-btn dynamic-config-next" id="type-next" type="button" disabled>ادامه به انتخاب قالب ←</button>
+      </div>
+      <p class="dynamic-config-note" id="type-note" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="container footer-inner">
+      <span class="footer-brand">کارآفرینک / KARAFARINAK</span>
+      <span>© کارآفرینک</span>
+    </div>
+  </footer>
+
+  <script>
+    const typeInputs = [...document.querySelectorAll('input[name="site-type"]')];
+    const selectedType = document.getElementById('selected-type');
+    const nextButton = document.getElementById('type-next');
+    const note = document.getElementById('type-note');
+
+    typeInputs.forEach(input => {
+      input.addEventListener('change', () => {
+        typeInputs.forEach(item => item.closest('.dynamic-type-card').classList.toggle('selected', item.checked));
+        selectedType.textContent = input.dataset.title;
+        nextButton.disabled = false;
+        note.textContent = 'نوع سایت انتخاب شد؛ در مرحله بعد قالب مناسب را انتخاب می‌کنید.';
+        localStorage.setItem('krf_dynamic_site_type', input.value);
+        localStorage.setItem('krf_dynamic_site_type_title', input.dataset.title);
+        localStorage.setItem('krf_dynamic_base_price', '10000000');
+      });
+    });
+
+    nextButton.addEventListener('click', () => {
+      if (!nextButton.disabled) {
+        window.location.href = 'dynamic-template-selection.html';
+      }
+    });
+  </script>
+</body>
 </html>
