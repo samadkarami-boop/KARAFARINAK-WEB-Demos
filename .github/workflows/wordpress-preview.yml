@@ -1,0 +1,53 @@
+name: Deploy private WordPress preview
+
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+concurrency:
+  group: "wordpress-preview"
+  cancel-in-progress: false
+
+jobs:
+  deploy:
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout public demo repository
+        uses: actions/checkout@v4
+
+      - name: Checkout private WordPress preview
+        uses: actions/checkout@v4
+        with:
+          repository: samadkarami-boop/Karafarinak-wordpress
+          ref: main
+          token: ${{ secrets.WP_REPO_TOKEN }}
+          path: _private-wp
+
+      - name: Build deployment artifact
+        run: |
+          rm -rf _site
+          mkdir -p _site
+          cp -R _private-wp/wp-preview/. _site/.
+          mkdir -p _site/assets/images
+          cp _private-wp/assets/images/hero-robots.jpg _site/assets/images/hero-robots.jpg
+          sed -i 's#../assets/images/hero-robots.jpg#assets/images/hero-robots.jpg#g' _site/style.css
+          rm -rf _private-wp
+
+      - name: Setup Pages
+        uses: actions/configure-pages@v5
+
+      - name: Upload artifact
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: './_site'
+
+      - name: Deploy to GitHub Pages
+        id: deployment
+        uses: actions/deploy-pages@v5
