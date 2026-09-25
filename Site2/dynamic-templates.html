@@ -149,8 +149,9 @@
         <h2>پذیرش شرایط و ضوابط</h2>
         <label class="dynamic-accept-check">
           <input type="checkbox" id="dynamic-terms-check">
-          <span>شرایط و ضوابط طراحی و ساخت سایت دینامیک کارآفرینک را مطالعه کرده‌ام و می‌پذیرم.</span>
+          <span>شرایط و ضوابط طراحی و ساخت سایت دینامیک کارآفرینک را مطالعه کرده‌ام و می‌پذیرم. <strong class="dynamic-required-mark">(الزامی)</strong></span>
         </label>
+        <p id="terms-error" class="dynamic-choice-error">پذیرش شرایط و ضوابط الزامی است.</p>
         <button class="dynamic-next-btn" id="dynamic-next" type="button" disabled>ادامه به انتخاب نوع سایت و قالب ←</button>
         <p class="dynamic-next-note" id="dynamic-next-note" aria-live="polite"></p>
       </section>
@@ -180,7 +181,7 @@
       }
     });
   
-    const termsAccept=document.getElementById('terms-accept');
+    const termsAccept=document.getElementById('dynamic-terms-check');
     const termsError=document.getElementById('terms-error');
     function syncTermsError(){ if(!termsAccept||!termsError)return; termsError.classList.toggle('is-hidden',termsAccept.checked); }
     if(termsAccept){termsAccept.addEventListener('change',syncTermsError);syncTermsError();}
