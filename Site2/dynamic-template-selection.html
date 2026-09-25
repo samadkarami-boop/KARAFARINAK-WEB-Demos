@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>انتخاب قالب سایت دینامیک | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260925-0200">
+  <link rel="stylesheet" href="style.css?v=20260925-0300">
 </head>
 <body class="dynamic-config-page">
   <header class="site-header">
@@ -306,7 +306,11 @@
 
     nextButton.addEventListener('click', function() {
       if (!selectedVariation) return;
-      note.textContent = 'مرحله بعد پس از تکمیل بخش امکانات فعال خواهد شد.';
+      if (type === 'store') {
+        window.location.href = 'dynamic-store-features.html';
+        return;
+      }
+      note.textContent = 'مرحله بعدی برای سایت‌های محتوایی پس از تکمیل ساختار امکانات فعال خواهد شد.';
     });
 
     renderFamilies();
