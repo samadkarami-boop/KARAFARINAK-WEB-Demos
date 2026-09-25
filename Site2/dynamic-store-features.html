@@ -25,6 +25,23 @@
         <p>امکانات تکمیلی موردنیاز فروشگاه را انتخاب کنید و در صورت نیاز، راه‌اندازی سرویس‌های جانبی را نیز به کارآفرینک بسپارید.</p>
       </div>
 
+      <section class="dynamic-selected-summary" aria-labelledby="selected-config-title">
+        <div class="dynamic-selected-summary-head">
+          <div>
+            <span class="dynamic-feature-eyebrow">انتخاب‌های شما</span>
+            <h2 id="selected-config-title">خلاصه انتخاب‌های انجام‌شده</h2>
+            <p>انتخاب‌های مرحله قبل در این بخش به‌صورت خودکار نمایش داده می‌شوند.</p>
+          </div>
+        </div>
+        <div class="dynamic-selected-list">
+          <div><span>نوع سایت</span><strong id="selected-type">—</strong></div>
+          <div><span>زمینه قالب</span><strong id="selected-family">—</strong></div>
+          <div><span>واریانت قالب</span><strong id="selected-variation">—</strong></div>
+          <div><span>هزینه طراحی اولیه</span><strong id="selected-base-price">—</strong></div>
+          <div><span>زمان پایه</span><strong id="selected-base-time">۹ روز کاری</strong></div>
+        </div>
+      </section>
+
       <section class="dynamic-option-box">
         <div class="dynamic-option-head">
           <h2>امکانات تکمیلی فروشگاه</h2>
@@ -121,7 +138,11 @@
   </footer>
 
   <script>
-    const BASE_PRICE = 12000000;
+    const BASE_PRICE = Number(localStorage.getItem('krf_dynamic_base_price') || 12000000);
+    const typeTitle = localStorage.getItem('krf_dynamic_site_type_title') || 'انتخاب نشده';
+    const familyId = localStorage.getItem('krf_dynamic_family') || '';
+    const variationCode = localStorage.getItem('krf_dynamic_variation_code') || '';
+    const variationTitle = localStorage.getItem('krf_dynamic_variation_title') || 'انتخاب نشده';
     const BASE_TIME = 9;
     const ADDON_PRICE = 1500000;
     const ADDON_TIME = 1;
@@ -130,6 +151,28 @@
     const checks = Array.from(document.querySelectorAll('input[name="addon"]'));
     const serviceChecks = Array.from(document.querySelectorAll('input[name="service"]'));
     const note = document.getElementById('features-note');
+
+    const familyTitles = {
+      ecommerce:'فروشگاهی',
+      corporate:'شرکتی',
+      services:'خدماتی',
+      engineering:'مهندسی و پیمانکاری',
+      medical:'پزشکی',
+      'real-estate':'املاک',
+      restaurant:'رستوران و غذا',
+      education:'آموزش',
+      personal:'شخصی و برند شخصی',
+      'legal-financial':'حقوقی و مالی',
+      'content-magazine':'محتوا و مجله',
+      portfolio:'نمونه‌کار',
+      events:'رویداد'
+    };
+    document.getElementById('selected-type').textContent = typeTitle;
+    document.getElementById('selected-family').textContent = familyTitles[familyId] || familyId || 'انتخاب نشده';
+    document.getElementById('selected-variation').textContent = variationCode && variationTitle !== 'انتخاب نشده'
+      ? variationCode + ' — ' + variationTitle
+      : 'انتخاب نشده';
+    document.getElementById('selected-base-price').textContent = BASE_PRICE.toLocaleString('fa-IR') + ' تومان';
 
     function formatMoney(value){return value.toLocaleString('fa-IR')+' تومان';}
     function updateCalculator(){
