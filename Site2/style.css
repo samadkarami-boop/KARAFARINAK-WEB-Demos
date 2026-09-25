@@ -346,3 +346,8 @@
 .dynamic-payment-button{min-height:50px;padding:0 34px;border:0;border-radius:13px;background:#2f8b57;color:#fff;font:inherit;font-weight:900;cursor:pointer}
 .dynamic-payment-note{margin-top:12px;text-align:center;color:#667c92;font-size:.75rem;line-height:1.9}
 @media(max-width:700px){.dynamic-invoice-summary{grid-template-columns:1fr}.dynamic-payment-button{width:100%}}
+
+/* Dynamic invoice and unified validation */
+.dynamic-invoice-detail-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;margin-top:18px}.dynamic-invoice-detail-grid>div{background:#f7fafc;border:1px solid var(--line);border-radius:14px;padding:16px}.dynamic-invoice-detail-grid h3{margin:0 0 8px;font-size:1rem}.dynamic-invoice-detail-grid ul{margin:0;padding-right:20px;color:#526b80}.dynamic-invoice-download-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:18px}.dynamic-download-button{border:0;border-radius:10px;padding:11px 16px;background:var(--accent);color:#fff;font:inherit;font-weight:800;cursor:pointer}.dynamic-download-button.secondary{background:#526b80}.dynamic-download-button:hover{filter:brightness(.96)}
+@media(max-width:700px){.dynamic-invoice-detail-grid{grid-template-columns:1fr}}
+@media print{.site-header,.site-footer,.dynamic-stage-actions,.dynamic-payment-actions,.dynamic-payment-note,.dynamic-invoice-download-actions{display:none!important}.dynamic-config-shell{padding:0!important}.dynamic-config{max-width:none!important;box-shadow:none!important}.dynamic-payment-box,.dynamic-section{break-inside:avoid}.dynamic-terms-repeat{break-before:page}}
