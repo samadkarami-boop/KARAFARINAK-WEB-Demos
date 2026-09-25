@@ -36,16 +36,17 @@
               <tr>
                 <th>انتخاب</th>
                 <th>امکان تکمیلی</th>
+                <th>مدت زمان</th>
                 <th>هزینه</th>
               </tr>
             </thead>
             <tbody>
-              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="advanced-search"></td><td>جستجوی پیشرفته محصولات</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
-              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="advanced-filter"></td><td>فیلتر پیشرفته محصولات</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
-              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="wishlist"></td><td>علاقه‌مندی محصولات</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
-              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="reviews-rating"></td><td>امتیازدهی و نظرات مشتریان</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
-              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="sms"></td><td>اتصال به سامانه پیامکی</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
-              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="postal"></td><td>اتصال به سامانه ارسال پستی</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
+              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="advanced-search"></td><td>جستجوی پیشرفته محصولات</td><td class="dynamic-option-duration">۱ روز کاری</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
+              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="advanced-filter"></td><td>فیلتر پیشرفته محصولات</td><td class="dynamic-option-duration">۱ روز کاری</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
+              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="wishlist"></td><td>علاقه‌مندی محصولات</td><td class="dynamic-option-duration">۱ روز کاری</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
+              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="reviews-rating"></td><td>امتیازدهی و نظرات مشتریان</td><td class="dynamic-option-duration">۱ روز کاری</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
+              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="sms"></td><td>اتصال به سامانه پیامکی</td><td class="dynamic-option-duration">۱ روز کاری</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
+              <tr><td><input class="dynamic-option-select" type="checkbox" name="addon" value="postal"></td><td>اتصال به سامانه ارسال پستی</td><td class="dynamic-option-duration">۱ روز کاری</td><td class="dynamic-option-price">۱,۵۰۰,۰۰۰ تومان</td></tr>
             </tbody>
           </table>
         </div>
@@ -66,8 +67,11 @@
           <table class="dynamic-service-table">
             <thead>
               <tr>
+                <th>انتخاب</th>
                 <th>خدمت</th>
+                <th>مدت زمان</th>
                 <th>هزینه خدمات</th>
+                <th>توضیحات</th>
               </tr>
             </thead>
             <tbody>
@@ -80,6 +84,25 @@
           </table>
         </div>
         <div class="dynamic-option-note"><strong>توضیح خدمات ارسال پستی:</strong> این مبلغ برای راه‌اندازی یک سرویس استاندارد ارسال/حمل‌ونقل، نصب و تنظیم افزونه یا اتصال مربوط، تعریف مبدا و روش‌های ارسال، تنظیم نرخ‌ها و انجام تست‌های لازم در نظر گرفته شده است. هزینه خرید سرویس یا اشتراک شرکت ارسال‌کننده و هرگونه توسعه اختصاصی یا اتصال API خارج از حالت استاندارد جداگانه محاسبه می‌شود.</div>
+        <div class="dynamic-service-cost-note"><strong>این مبالغ فقط هزینه خدمات کارآفرینک هستند و هزینه خرید خود سرویس‌ها محسوب نمی‌شوند.</strong> در صورت انجام خرید توسط کارآفرینک، هزینه خرید سرویس طبق فاکتور صادرکننده جداگانه دریافت و فاکتور آن به مشتری تحویل می‌شود.</div>
+      </section>
+
+      <section class="dynamic-calculator" aria-labelledby="dynamic-calculator-title">
+        <div class="dynamic-calculator-head">
+          <h2 id="dynamic-calculator-title">محاسبه‌گر مبلغ و زمان نهایی</h2>
+          <p>مبلغ و زمان بر اساس انتخاب‌های شما محاسبه می‌شود. زمان پایه فعلی طراحی فروشگاه ۹ روز کاری است.</p>
+        </div>
+        <div class="dynamic-calculator-grid">
+          <div><span>هزینه طراحی اولیه</span><strong id="calc-base-price">۱۲,۰۰۰,۰۰۰ تومان</strong></div>
+          <div><span>هزینه امکانات تکمیلی</span><strong id="calc-addon-price">۰ تومان</strong></div>
+          <div><span>هزینه خدمات انتخاب‌شده</span><strong id="calc-service-price">۰ تومان</strong></div>
+          <div><span>مبلغ نهایی</span><strong id="calc-total-price">۱۲,۰۰۰,۰۰۰ تومان</strong></div>
+          <div><span>زمان پایه طراحی</span><strong>۹ روز کاری</strong></div>
+          <div><span>زمان امکانات تکمیلی</span><strong id="calc-addon-time">۰ روز کاری</strong></div>
+          <div><span>زمان خدمات انتخاب‌شده</span><strong id="calc-service-time">۰ روز کاری</strong></div>
+          <div><span>زمان آماده‌سازی نهایی</span><strong id="calc-total-time">۹ روز کاری</strong></div>
+        </div>
+        <p class="dynamic-calculator-note">زمان هر خدمت راه‌اندازی، پس از فعال‌سازی سرویس مربوطه توسط سایت ارائه‌دهنده خدمات محاسبه می‌شود.</p>
       </section>
 
       <div class="dynamic-stage-actions">
