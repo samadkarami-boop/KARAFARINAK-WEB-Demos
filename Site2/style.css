@@ -324,3 +324,25 @@
 .dynamic-service-table-wrap{overflow-x:hidden}
 .dynamic-service-table th,.dynamic-service-table td{overflow-wrap:anywhere;word-break:normal}
 .dynamic-service-table th:nth-child(2),.dynamic-service-table td:nth-child(2){font-weight:800}
+
+
+/* Unified required-field validation */
+.dynamic-required-mark{font-weight:800;color:#a33;margin-right:4px}
+.dynamic-field-error,.dynamic-choice-error{display:block;min-height:1.6em;margin-top:4px;color:#c62828;font-size:.72rem;font-weight:700;line-height:1.7}
+.dynamic-field-error.is-hidden,.dynamic-choice-error.is-hidden{display:none}
+.customer-field input.field-invalid,.customer-field textarea.field-invalid,.customer-field select.field-invalid{border-color:#c62828;box-shadow:0 0 0 2px rgba(198,40,40,.08)}
+.dynamic-required-heading{color:inherit}
+.dynamic-required-heading .dynamic-required-mark{font-size:.75em}
+.dynamic-payment-box{margin-top:24px;padding:22px;border:1px solid #d7e3ee;border-radius:18px;background:#fff;box-shadow:var(--shadow)}
+.dynamic-invoice-summary{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;margin-top:18px}
+.dynamic-invoice-summary>div{padding:14px;border:1px solid #d7e3ee;border-radius:12px;background:#f7fafc}
+.dynamic-invoice-summary span{display:block;color:#667c92;font-size:.72rem}
+.dynamic-invoice-summary strong{display:block;margin-top:4px;font-size:.9rem}
+.dynamic-invoice-total{background:#e7eef7!important;border-color:#b9cde0!important}
+.dynamic-invoice-total strong{color:#173f72;font-size:1.05rem!important}
+.dynamic-terms-repeat{margin-top:24px}
+.dynamic-terms-repeat .dynamic-section{background:#fff;border:1px solid #dfe7ef;border-radius:14px;padding:18px;margin-top:12px}
+.dynamic-payment-actions{display:flex;justify-content:center;margin-top:24px}
+.dynamic-payment-button{min-height:50px;padding:0 34px;border:0;border-radius:13px;background:#2f8b57;color:#fff;font:inherit;font-weight:900;cursor:pointer}
+.dynamic-payment-note{margin-top:12px;text-align:center;color:#667c92;font-size:.75rem;line-height:1.9}
+@media(max-width:700px){.dynamic-invoice-summary{grid-template-columns:1fr}.dynamic-payment-button{width:100%}}
