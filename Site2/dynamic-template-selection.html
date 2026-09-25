@@ -89,7 +89,7 @@
         </div>
         <div>
           <span>هزینه طراحی اولیه</span>
-          <strong>۱۰,۰۰۰,۰۰۰ تومان</strong>
+          <strong id="summary-base-price">۱۰,۰۰۰,۰۰۰ تومان</strong>
         </div>
         <div>
           <span>هزینه واریانت قالب</span>
@@ -179,6 +179,12 @@
     const variationRows = document.getElementById('variation-rows');
     const variationHint = document.getElementById('variation-hint');
     const summaryType = document.getElementById('summary-type');
+    const summaryBasePrice = document.getElementById('summary-base-price');
+    const summaryPrice = document.getElementById('summary-price');
+    const basePrice = localStorage.getItem('krf_dynamic_base_price') || (type === 'store' ? '12000000' : '10000000');
+    const formattedBasePrice = Number(basePrice).toLocaleString('fa-IR') + ' تومان';
+    summaryBasePrice.textContent = formattedBasePrice;
+    summaryPrice.textContent = formattedBasePrice;
     const summaryTemplate = document.getElementById('summary-template');
     const previewTitle = document.getElementById('preview-title');
     const previewDetail = document.getElementById('preview-detail');
@@ -246,7 +252,7 @@
       previewTitle.textContent = selectedVariation[1];
       previewDetail.textContent = 'شناسه واریانت: ' + selectedVariation[0] + ' | زمینه: ' + selectedFamily.fa + ' | هزینه واریانت: رایگان | زمان آماده‌سازی برآوردی: ۹ روز کاری';
       nextButton.disabled = false;
-      note.textContent = 'واریانت قالب انتخاب شد و هزینه جداگانه‌ای ندارد؛ هزینه طراحی اولیه سایت ۱۰ میلیون تومان است.';
+      note.textContent = 'واریانت قالب انتخاب شد و هزینه جداگانه‌ای ندارد؛ هزینه طراحی اولیه سایت ' + formattedBasePrice + ' است.';
       localStorage.setItem('krf_dynamic_variation_code', selectedVariation[0]);
       localStorage.setItem('krf_dynamic_variation_title', selectedVariation[1]);
     });
