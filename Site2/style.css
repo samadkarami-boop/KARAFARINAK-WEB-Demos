@@ -227,3 +227,41 @@
   .dynamic-base-table tbody th{padding:8px 5px;font-size:.61rem}
   .dynamic-base-table tbody td{padding:7px 2px;font-size:.72rem}
 }
+
+
+/* Dynamic ecommerce optional features / service setup */
+.dynamic-option-box,.dynamic-service-box{margin-top:18px;padding:24px;border:1px solid #cfdbe6;border-radius:22px;background:#fff;box-shadow:0 16px 40px rgba(35,71,106,.10)}
+.dynamic-option-head,.dynamic-service-head{margin-bottom:18px;text-align:right}
+.dynamic-option-head h2,.dynamic-service-head h2{margin:0;color:#17324d;font-size:1.2rem;font-weight:900}
+.dynamic-option-head p,.dynamic-service-head p{margin:7px 0 0;color:#667c92;font-size:.78rem;line-height:2}
+.dynamic-option-table-wrap,.dynamic-service-table-wrap{width:100%;overflow:hidden;border:1px solid #d6e1ea;border-radius:16px}
+.dynamic-option-table,.dynamic-service-table{width:100%;border-collapse:separate;border-spacing:0;background:linear-gradient(145deg,#f8f4e8,#f1ead8)}
+.dynamic-option-table th,.dynamic-option-table td,.dynamic-service-table th,.dynamic-service-table td{border-left:1px solid #d6e1ea;border-bottom:1px solid #d6e1ea}
+.dynamic-option-table th:last-child,.dynamic-option-table td:last-child,.dynamic-service-table th:last-child,.dynamic-service-table td:last-child{border-left:0}
+.dynamic-option-table thead th,.dynamic-service-table thead th{padding:11px 9px;background:#e4edf4;color:#294963;text-align:center;font-size:.74rem;font-weight:900;line-height:1.7}
+.dynamic-option-table tbody td,.dynamic-service-table tbody td{padding:12px 10px;background:linear-gradient(145deg,#f8f4e8,#f1ead8);color:#425f76;text-align:right;font-size:.76rem;line-height:1.9}
+.dynamic-option-table tbody tr:hover td,.dynamic-service-table tbody tr:hover td{background:#f3efe5}
+.dynamic-option-table td:first-child,.dynamic-service-table td:first-child{width:9%;text-align:center}
+.dynamic-option-table td:nth-child(2){font-weight:800;color:#17324d}
+.dynamic-option-price,.dynamic-service-price{white-space:nowrap;text-align:center!important;color:#17324d!important;font-weight:900!important}
+.dynamic-option-select{width:22px;height:22px;accent-color:#2f8b57;cursor:pointer}
+.dynamic-option-note{margin:14px 0 0;padding:12px 14px;border:1px solid #d6e1ea;border-radius:12px;background:#f7fafc;color:#526b80;font-size:.72rem;line-height:2}
+.dynamic-reminder{margin-top:18px;padding:16px 18px;border:1px solid #d7cda9;border-radius:16px;background:linear-gradient(145deg,#fffaf0,#f7f0dc);color:#665a35;font-size:.76rem;line-height:2.1}
+.dynamic-reminder strong{color:#4e4425;font-weight:900}
+.dynamic-service-box{background:linear-gradient(145deg,#ffffff,#f8fbfd)}
+.dynamic-service-head p{max-width:900px}
+.dynamic-service-price{color:#24745f!important}
+.dynamic-stage-actions{display:flex;justify-content:space-between;align-items:center;gap:14px;margin-top:20px}
+.dynamic-stage-back,.dynamic-stage-next{display:inline-flex;align-items:center;justify-content:center;min-height:46px;padding:0 22px;border-radius:12px;text-decoration:none;font-size:.78rem;font-weight:900}
+.dynamic-stage-back{border:1px solid #c9d7e3;background:#f7fafc;color:#294963}
+.dynamic-stage-next{border:1px solid #2f8b57;background:#2f8b57;color:#fff}
+@media(max-width:700px){
+ .dynamic-option-box,.dynamic-service-box{padding:16px}
+ .dynamic-option-head h2,.dynamic-service-head h2{font-size:1.05rem}
+ .dynamic-option-head p,.dynamic-service-head p{font-size:.7rem}
+ .dynamic-option-table,.dynamic-service-table{font-size:.68rem}
+ .dynamic-option-table thead th,.dynamic-service-table thead th{padding:9px 5px;font-size:.64rem}
+ .dynamic-option-table tbody td,.dynamic-service-table tbody td{padding:9px 6px;font-size:.67rem}
+ .dynamic-stage-actions{flex-direction:column-reverse}
+ .dynamic-stage-back,.dynamic-stage-next{width:100%}
+}
