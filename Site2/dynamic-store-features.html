@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>امکانات و خدمات فروشگاه | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260925-0600">
+  <link rel="stylesheet" href="style.css?v=20260925-0900">
 </head>
 <body class="dynamic-config-page">
   <header class="site-header">
@@ -92,11 +92,12 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="domain"></td><td>ثبت و راه‌اندازی دامنه</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
-              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="hosting"></td><td>هاست و بارگذاری قالب سایت</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۳,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="domain"></td><td>ثبت و راه‌اندازی دامنه به نام مشتری</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td><td>دامنه به نام مشتری ثبت می‌شود؛ احراز هویت و اطلاعات لازم توسط مشتری انجام می‌شود و تنظیمات اتصال دامنه توسط کارآفرینک انجام خواهد شد.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="hosting"></td><td>مشاوره، تهیه هاست و بارگذاری قالب سایت</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۳,۰۰۰,۰۰۰ تومان</td><td>انتخاب سرویس متناسب با سایت، تهیه در صورت درخواست و بارگذاری/تنظیم اولیه قالب؛ هزینه خرید هاست جداگانه است.</td></tr>
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="sms"></td><td>فعال‌سازی سرویس پیامکی و تنظیمات روی هاست و قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="gateway"></td><td>خدمات درگاه پرداخت و تغییرات لازم روی هاست و اتصال به قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
-              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="postal"></td><td>خدمات سرویس ارسال پستی و تنظیمات روی هاست و قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="postal"></td><td>خدمات سرویس ارسال پستی و تنظیمات روی هاست و قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>برای فروشگاه؛ راه‌اندازی استاندارد ارسال و تنظیمات روی سایت. هزینه خرید سرویس و توسعه اختصاصی/API جداگانه است.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="consulting"></td><td>جلسه مشاوره و انتخاب سرویس‌های موردنیاز سایت</td><td class="dynamic-service-duration">۱ جلسه</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td><td>بررسی نیازهای فروشگاه و پیشنهاد هاست، دامنه، پیامک، درگاه و سرویس‌های جانبی متناسب با پروژه.</td></tr>
             </tbody>
           </table>
         </div>
@@ -146,8 +147,8 @@
     const BASE_TIME = 9;
     const ADDON_PRICE = 1500000;
     const ADDON_TIME = 1;
-    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000,gateway:2000000,postal:2000000};
-    const SERVICE_TIME = 1;
+    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000,gateway:2000000,postal:2000000,consulting:1000000};
+    const SERVICE_TIMES = {domain:1,hosting:1,sms:1,gateway:1,postal:1,consulting:0};
     const checks = Array.from(document.querySelectorAll('input[name="addon"]'));
     const serviceChecks = Array.from(document.querySelectorAll('input[name="service"]'));
     const note = document.getElementById('features-note');
@@ -182,7 +183,7 @@
       const serviceTotal=selectedServices.reduce(function(t,k){return t+(SERVICE_PRICES[k]||0);},0);
       const totalPrice=BASE_PRICE+addonTotal+serviceTotal;
       const addonTime=selected.length*ADDON_TIME;
-      const serviceTime=selectedServices.length*SERVICE_TIME;
+      const serviceTime=selectedServices.reduce(function(t,k){return t+(SERVICE_TIMES[k]||0);},0);
       const totalTime=BASE_TIME+addonTime+serviceTime;
       localStorage.setItem('krf_dynamic_addons',JSON.stringify(selected));
       localStorage.setItem('krf_dynamic_services',JSON.stringify(selectedServices));
