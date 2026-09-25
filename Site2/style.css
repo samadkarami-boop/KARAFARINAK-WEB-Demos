@@ -43,7 +43,8 @@
 .large-preview-frame img{display:block;width:100%;height:auto;max-height:760px;object-fit:contain}
 .template-features{display:flex;flex-wrap:wrap;justify-content:center;gap:8px;margin:16px auto 0;max-width:900px}
 .template-features span{padding:7px 13px;border:1px solid #277548;border-radius:999px;background:#2f8b57;color:#fff;font-size:.72rem;font-weight:600}
-@media(max-width:700px){
+@media(max-width:700px)
+{
   .static-template-box{padding:12px}
   .static-table-title{padding:4px 4px 14px}
 }
@@ -262,6 +263,13 @@
 .dynamic-service-price{color:#24745f!important}
 .dynamic-service-cost-note{margin-top:14px;padding:13px 15px;border:1px solid #cfdbe6;border-radius:12px;background:#eef4f8;color:#294963;font-size:.76rem;line-height:2}
 .dynamic-service-cost-note strong{font-weight:900;color:#17324d}
+.dynamic-selected-summary{margin-bottom:18px;padding:22px;border:1px solid #cfdbe6;border-radius:20px;background:linear-gradient(145deg,#f7fafc,#eef4f8);box-shadow:0 10px 28px rgba(35,71,106,.07)}
+.dynamic-selected-summary-head h2{margin:3px 0 5px;color:#17324d;font-size:1.12rem;font-weight:900}
+.dynamic-selected-summary-head p{margin:0;color:#667c92;font-size:.74rem;line-height:1.9}
+.dynamic-selected-list{display:grid;grid-template-columns:repeat(5,1fr);gap:9px;margin-top:14px}
+.dynamic-selected-list>div{padding:12px 10px;border:1px solid #d7e3ee;border-radius:12px;background:#fff;text-align:center}
+.dynamic-selected-list span{display:block;color:#788c9e;font-size:.66rem;margin-bottom:4px}
+.dynamic-selected-list strong{display:block;color:#294963;font-size:.78rem;font-weight:900;line-height:1.8}
 .dynamic-calculator{margin-top:18px;padding:24px;border:1px solid #cfdbe6;border-radius:22px;background:linear-gradient(145deg,#ffffff,#f7fafc);box-shadow:0 16px 40px rgba(35,71,106,.10)}
 .dynamic-calculator-head{text-align:right;margin-bottom:16px}
 .dynamic-calculator-head h2{margin:0;color:#17324d;font-size:1.2rem;font-weight:900}
