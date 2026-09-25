@@ -1,0 +1,110 @@
+<!doctype html>
+<html lang="fa" dir="rtl">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>اطلاعات مشتری | کارآفرینک</title>
+  <link rel="stylesheet" href="style.css?v=20260925-0900">
+  <style>
+    .customer-info-box{background:#fff;border:1px solid #dfe7ef;border-radius:18px;padding:24px;margin-top:20px}
+    .customer-info-note{background:#f7fafc;border-right:4px solid #4c6a7a;padding:16px;border-radius:10px;line-height:2;margin-top:16px}
+    .customer-form-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;margin-top:20px}
+    .customer-field{display:flex;flex-direction:column;gap:7px}
+    .customer-field.full{grid-column:1/-1}
+    .customer-field label{font-weight:700}
+    .customer-field input,.customer-field textarea,.customer-field select{width:100%;box-sizing:border-box;border:1px solid #cfd9e2;border-radius:10px;padding:12px 13px;font:inherit;background:#fff}
+    .customer-field textarea{min-height:120px;resize:vertical}
+    .customer-field input:invalid:not(:placeholder-shown),.customer-field textarea:invalid:not(:placeholder-shown){border-color:#c44}
+    .customer-conditional{display:none}
+    .customer-conditional.is-visible{display:flex}
+    .customer-conditional-note{display:none;background:#fff8e8;border:1px solid #ead7a0;padding:13px;border-radius:10px;line-height:1.9;margin-top:14px}
+    .customer-conditional-note.is-visible{display:block}
+    .customer-submit-note{margin-top:18px;color:#5d6975}
+    @media(max-width:700px){.customer-form-grid{grid-template-columns:1fr}.customer-field.full{grid-column:auto}.customer-info-box{padding:17px}}
+  </style>
+</head>
+<body class="dynamic-config-page">
+<header class="site-header">
+  <a class="brand" href="index.html"><span>کارآفرینک</span><small>KARAFARINAK</small></a>
+  <nav class="main-nav" aria-label="منوی اصلی">
+    <a href="index.html">خانه</a><a href="contact.html">تماس با ما</a><a href="about.html">درباره ما</a><a class="cart" href="cart.html"><span class="cart-icon">🛒</span> سبد خرید <span class="cart-count">۰</span></a>
+  </nav>
+</header>
+<main class="dynamic-config-shell">
+<section class="dynamic-config">
+  <div class="dynamic-config-head">
+    <span class="dynamic-step">مرحله ۴</span>
+    <h1>اطلاعات مشتری</h1>
+    <p>لطفاً اطلاعات زیر را با دقت وارد کنید. شماره موبایل و ایمیل ثبت‌شده، ملاک اطلاع‌رسانی و ارسال و دریافت فایل‌ها و اطلاعات مربوط به سفارش خواهد بود.</p>
+  </div>
+  <section class="customer-info-box">
+    <div class="customer-info-note"><strong>نکته مهم:</strong> همه اطلاعات عمومی این فرم الزامی هستند. اطلاعاتی مانند کد ملی و کد پستی فقط زمانی نمایش داده و اجباری می‌شوند که خدمت انتخاب‌شده به آن‌ها نیاز داشته باشد. برای خدمات اینماد و درگاه پرداخت، دامنه و هاست فعال و سایت بارگذاری و در دسترس بودن آن ضروری است.</div>
+    <form id="customer-form" novalidate>
+      <div class="customer-form-grid">
+        <div class="customer-field"><label for="full-name">نام و نام خانوادگی ⭐</label><input id="full-name" name="fullName" required autocomplete="name"></div>
+        <div class="customer-field"><label for="mobile">شماره موبایل ⭐</label><input id="mobile" name="mobile" type="tel" inputmode="numeric" required pattern="^0[0-9۰-۹]{9}$" maxlength="10" autocomplete="tel" placeholder="مثلاً 09121234567"></div>
+        <div class="customer-field"><label for="email">ایمیل ⭐</label><input id="email" name="email" type="email" required autocomplete="email" placeholder="مثلاً example@domain.com"></div>
+        <div class="customer-field"><label for="business-name">نام شرکت / مجموعه ⭐</label><input id="business-name" name="businessName" required autocomplete="organization"></div>
+        <div class="customer-field"><label for="manager-name">نام و نام خانوادگی صاحب کسب‌وکار / مدیر ⭐</label><input id="manager-name" name="managerName" required></div>
+        <div class="customer-field"><label for="province">استان ⭐</label><input id="province" name="province" required autocomplete="address-level1"></div>
+        <div class="customer-field"><label for="city">شهر ⭐</label><input id="city" name="city" required autocomplete="address-level2"></div>
+        <div class="customer-field full"><label for="address">آدرس کامل ⭐</label><textarea id="address" name="address" required autocomplete="street-address"></textarea></div>
+        <div class="customer-field"><label for="domain">نام دامنه موردنظر ⭐</label><input id="domain" name="domain" required placeholder="مثلاً example.ir"></div>
+        <div class="customer-field full"><label for="notes">توضیحات و درخواست‌های مشتری ⭐</label><textarea id="notes" name="notes" required></textarea></div>
+
+        <div id="conditional-note" class="customer-conditional-note full"></div>
+        <div id="business-type-wrap" class="customer-field full customer-conditional"><label for="business-type">زمینه فعالیت / نوع کسب‌وکار ⭐</label><input id="business-type" name="businessType"></div>
+        <div id="national-id-wrap" class="customer-field customer-conditional"><label for="national-id">کد ملی ⭐</label><input id="national-id" name="nationalId" inputmode="numeric" maxlength="10" pattern="^[0-9۰-۹]{10}$"></div>
+        <div id="postal-code-wrap" class="customer-field customer-conditional"><label for="postal-code">کد پستی ⭐</label><input id="postal-code" name="postalCode" inputmode="numeric" maxlength="10" pattern="^[0-9۰-۹]{10}$"></div>
+        <div id="tax-code-wrap" class="customer-field full customer-conditional"><label for="tax-code">کد رهگیری مالیاتی ⭐</label><input id="tax-code" name="taxCode"></div>
+      </div>
+      <p class="customer-submit-note">قالب نوشتاری فارسی یا انگلیسی برای فیلدهای متنی اجباری نیست و می‌توانید اطلاعات را به هر شکلی که برای شما مناسب است وارد کنید؛ کنترل فرمت فقط برای ایمیل، شماره موبایل، کد ملی و کد پستی اعمال می‌شود.</p>
+      <div class="dynamic-stage-actions">
+        <a class="dynamic-stage-back" href="dynamic-template-selection.html">→ بازگشت</a>
+        <button class="dynamic-stage-next" type="submit">ثبت اطلاعات و ادامه ←</button>
+      </div>
+    </form>
+  </section>
+</section>
+</main>
+<footer class="site-footer"><div class="container footer-inner"><span class="footer-brand">کارآفرینک / KARAFARINAK</span><span>© کارآفرینک</span></div></footer>
+<script>
+(function(){
+  const services=JSON.parse(localStorage.getItem('krf_dynamic_services')||'[]');
+  const needsIdentity=services.some(s=>['domain','hosting','sms','postal','gateway','enamad'].includes(s));
+  const needsTax=services.includes('gateway');
+  const needsBusinessType=services.includes('enamad');
+  const idWrap=document.getElementById('national-id-wrap'), postWrap=document.getElementById('postal-code-wrap'), taxWrap=document.getElementById('tax-code-wrap'), businessWrap=document.getElementById('business-type-wrap'), note=document.getElementById('conditional-note');
+  function setConditional(wrap,field,show){wrap.classList.toggle('is-visible',show);field.required=show;if(!show)field.value='';}
+  setConditional(idWrap,document.getElementById('national-id'),needsIdentity);
+  setConditional(postWrap,document.getElementById('postal-code'),needsIdentity);
+  setConditional(taxWrap,document.getElementById('tax-code'),needsTax);
+  setConditional(businessWrap,document.getElementById('business-type'),needsBusinessType);
+  const messages=[];
+  if(needsIdentity)messages.push('به‌دلیل خدمات انتخاب‌شده، کد ملی و کد پستی الزامی است.');
+  if(needsTax)messages.push('به‌دلیل انتخاب خدمات درگاه پرداخت، کد رهگیری مالیاتی نیز الزامی است.');
+  if(needsBusinessType)messages.push('برای درخواست اینماد، زمینه فعالیت / نوع کسب‌وکار نیز باید ثبت شود.');
+  if(services.includes('gateway')||services.includes('enamad'))messages.push('انجام اینماد و درگاه پرداخت منوط به داشتن دامنه و هاست فعال و سایت بارگذاری‌شده و در دسترس است.');
+  if(messages.length){note.textContent=messages.join(' ');note.classList.add('is-visible');}
+  const form=document.getElementById('customer-form');
+  form.addEventListener('submit',function(e){
+    e.preventDefault();
+    const mobile=document.getElementById('mobile');
+    const email=document.getElementById('email');
+    const national=document.getElementById('national-id');
+    const postal=document.getElementById('postal-code');
+    if(!/^0[0-9۰-۹]{9}$/.test(mobile.value.trim())){mobile.setCustomValidity('شماره موبایل باید ۱۰ رقم و با صفر شروع شود.');}else mobile.setCustomValidity('');
+    if(national.required&&!/^[0-9۰-۹]{10}$/.test(national.value.trim())){national.setCustomValidity('کد ملی باید ۱۰ رقم باشد.');}else national.setCustomValidity('');
+    if(postal.required&&!/^[0-9۰-۹]{10}$/.test(postal.value.trim())){postal.setCustomValidity('کد پستی باید ۱۰ رقم باشد.');}else postal.setCustomValidity('');
+    if(!form.checkValidity()){form.reportValidity();return;}
+    const data={};
+    new FormData(form).forEach((v,k)=>data[k]=String(v).trim());
+    data.services=services;
+    data.savedAt=new Date().toISOString();
+    localStorage.setItem('krf_dynamic_customer_info',JSON.stringify(data));
+    window.location.href='dynamic-invoice.html';
+  });
+})();
+</script>
+</body>
+</html>
