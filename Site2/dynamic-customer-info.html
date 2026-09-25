@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>اطلاعات مشتری | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260925-0900">
+  <link rel="stylesheet" href="style.css?v=20260925-1200">
   <style>
     .customer-info-box{background:#fff;border:1px solid #dfe7ef;border-radius:18px;padding:24px;margin-top:20px}
     .customer-info-note{background:#f7fafc;border-right:4px solid #4c6a7a;padding:16px;border-radius:10px;line-height:2;margin-top:16px}
@@ -48,9 +48,9 @@
         <div class="customer-field"><label for="manager-name">نام و نام خانوادگی صاحب کسب‌وکار / مدیر <strong class="dynamic-required-mark">(الزامی)</strong></label><input id="manager-name" name="managerName" required><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></div>
         <div class="customer-field"><label for="province">استان <strong class="dynamic-required-mark">(الزامی)</strong></label><input id="province" name="province" required autocomplete="address-level1"><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></div>
         <div class="customer-field"><label for="city">شهر <strong class="dynamic-required-mark">(الزامی)</strong></label><input id="city" name="city" required autocomplete="address-level2"><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></div>
-        <div class="customer-field full"><label for="address">آدرس کامل <strong class="dynamic-required-mark">(الزامی)</strong></label><textarea id="address" name="address" required autocomplete="street-address"><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></textarea></div>
+        <div class="customer-field full"><label for="address">آدرس کامل <strong class="dynamic-required-mark">(الزامی)</strong></label><textarea id="address" name="address" required autocomplete="street-address"></textarea><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></div>
         <div class="customer-field"><label for="domain">نام دامنه موردنظر <strong class="dynamic-required-mark">(الزامی)</strong></label><input id="domain" name="domain" required placeholder="مثلاً example.ir"><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></div>
-        <div class="customer-field full"><label for="notes">توضیحات و درخواست‌های مشتری <strong class="dynamic-required-mark">(الزامی)</strong></label><textarea id="notes" name="notes" required><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></textarea></div>
+        <div class="customer-field full"><label for="notes">توضیحات و درخواست‌های مشتری <strong class="dynamic-required-mark">(الزامی)</strong></label><textarea id="notes" name="notes" required></textarea><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></div>
 
         <div id="conditional-note" class="customer-conditional-note full"></div>
         <div id="business-type-wrap" class="customer-field full customer-conditional"><label for="business-type">زمینه فعالیت / نوع کسب‌وکار <strong class="dynamic-required-mark">(الزامی)</strong></label><input id="business-type" name="businessType"><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></div>
@@ -87,16 +87,36 @@
   if(services.includes('gateway')||services.includes('enamad'))messages.push('انجام اینماد و درگاه پرداخت منوط به داشتن دامنه و هاست فعال و سایت بارگذاری‌شده و در دسترس است.');
   if(messages.length){note.textContent=messages.join(' ');note.classList.add('is-visible');}
   const form=document.getElementById('customer-form');
+  const fields=[...form.querySelectorAll('input,textarea')];
+  function setError(field,message){
+    const box=field.parentElement.querySelector('.dynamic-field-error');
+    if(!box)return;
+    box.textContent=message||'';
+    box.classList.toggle('is-hidden',!message);
+  }
+  function validateField(field){
+    if(field.type==='hidden'||!field.offsetParent)return true;
+    const value=field.value.trim();
+    if(field.required&&!value){setError(field,'ورود اطلاعات الزامی است.');return false;}
+    if(field.id==='mobile'&&value&&!/^0[0-9۰-۹]{9}$/.test(value)){setError(field,'شماره موبایل باید ۱۰ رقم و با صفر شروع شود.');return false;}
+    if(field.id==='email'&&value&&!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value)){setError(field,'فرمت صحیح ایمیل وارد نشده است.');return false;}
+    if(field.id==='national-id'&&field.required&&value&&!/^[0-9۰-۹]{10}$/.test(value)){setError(field,'کد ملی باید ۱۰ رقم باشد.');return false;}
+    if(field.id==='postal-code'&&field.required&&value&&!/^[0-9۰-۹]{10}$/.test(value)){setError(field,'کد پستی باید ۱۰ رقم باشد.');return false;}
+    setError(field,''); return true;
+  }
+  fields.forEach(field=>{
+    field.addEventListener('input',()=>validateField(field));
+    field.addEventListener('blur',()=>validateField(field));
+  });
+  function validateAll(){
+    let ok=true;
+    fields.forEach(field=>{if(field.offsetParent&&!validateField(field))ok=false;});
+    return ok;
+  }
+  fields.forEach(field=>{if(field.required&&field.offsetParent)validateField(field);});
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    const mobile=document.getElementById('mobile');
-    const email=document.getElementById('email');
-    const national=document.getElementById('national-id');
-    const postal=document.getElementById('postal-code');
-    if(!/^0[0-9۰-۹]{9}$/.test(mobile.value.trim())){mobile.setCustomValidity('شماره موبایل باید ۱۰ رقم و با صفر شروع شود.');}else mobile.setCustomValidity('');
-    if(national.required&&!/^[0-9۰-۹]{10}$/.test(national.value.trim())){national.setCustomValidity('کد ملی باید ۱۰ رقم باشد.');}else national.setCustomValidity('');
-    if(postal.required&&!/^[0-9۰-۹]{10}$/.test(postal.value.trim())){postal.setCustomValidity('کد پستی باید ۱۰ رقم باشد.');}else postal.setCustomValidity('');
-    if(!form.checkValidity()){form.reportValidity();return;}
+    if(!validateAll())return;
     const data={};
     new FormData(form).forEach((v,k)=>data[k]=String(v).trim());
     data.services=services;
