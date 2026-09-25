@@ -179,6 +179,11 @@
         window.location.href = 'dynamic-site-type.html';
       }
     });
+  
+    const termsAccept=document.getElementById('terms-accept');
+    const termsError=document.getElementById('terms-error');
+    function syncTermsError(){ if(!termsAccept||!termsError)return; termsError.classList.toggle('is-hidden',termsAccept.checked); }
+    if(termsAccept){termsAccept.addEventListener('change',syncTermsError);syncTermsError();}
   </script>
 </body>
 </html>
