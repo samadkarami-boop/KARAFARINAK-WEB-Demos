@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>انتخاب قالب سایت دینامیک | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260925-0300">
+  <link rel="stylesheet" href="style.css?v=20260925-0500">
 </head>
 <body class="dynamic-config-page">
   <header class="site-header">
@@ -27,8 +27,8 @@
 
       <section class="dynamic-template-box">
         <div class="dynamic-template-section-head">
-          <h2>۱. انتخاب زمینه قالب</h2>
-          <span id="family-hint">یکی از زمینه‌های سایت را انتخاب کنید.</span>
+          <h2>۱. زمینه قالب</h2>
+          <span id="family-hint">زمینه پیش‌فرض نمایش داده شده است؛ در صورت نیاز می‌توانید زمینه دیگری را انتخاب کنید.</span>
         </div>
         <div class="dynamic-family-table-wrap">
           <table class="dynamic-family-table">
@@ -48,7 +48,7 @@
       <section class="dynamic-template-box dynamic-variation-box">
         <div class="dynamic-template-section-head">
           <h2>۲. انتخاب واریانت قالب</h2>
-          <span id="variation-hint">پس از انتخاب زمینه، واریانت‌های آن نمایش داده می‌شوند.</span>
+          <span id="variation-hint">واریانت‌های زمینه انتخاب‌شده به‌صورت خودکار نمایش داده می‌شوند.</span>
         </div>
         <div class="dynamic-variation-table-wrap">
           <table class="dynamic-variation-table">
@@ -242,13 +242,24 @@
     let selectedVariation = null;
 
     function renderFamilies() {
-      familyRows.innerHTML = activeFamilies.map(function(f) {
-        return '<tr class="family-row" data-family="' + f.id + '">' +
-          '<td class="select-cell"><label><input type="radio" name="family" value="' + f.id + '"><span class="custom-radio"></span></label></td>' +
+      familyRows.innerHTML = activeFamilies.map(function(f, index) {
+        return '<tr class="family-row' + (index === 0 ? ' selected' : '') + '" data-family="' + f.id + '">' +
+          '<td class="select-cell"><label><input type="radio" name="family" value="' + f.id + '"' + (index === 0 ? ' checked' : '') + '><span class="custom-radio"></span></label></td>' +
           '<td><strong>' + f.fa + '</strong><small>' + f.title + '</small></td>' +
           '<td>' + f.desc + '</td>' +
           '<td>' + f.vars.length + '</td></tr>';
       }).join('');
+      selectedFamily = activeFamilies[0] || null;
+      if (selectedFamily) {
+        localStorage.setItem('krf_dynamic_family', selectedFamily.id);
+        renderVariations();
+        previewTitle.textContent = selectedFamily.fa;
+        previewDetail.textContent = 'واریانت‌های زمینه «' + selectedFamily.fa + '» به‌صورت پیش‌فرض نمایش داده شده‌اند.';
+        if (type === 'store') {
+          summaryTemplate.textContent = 'ابتدا یک واریانت را انتخاب کنید';
+          nextButton.disabled = true;
+        }
+      }
     }
 
     function renderVariations() {
