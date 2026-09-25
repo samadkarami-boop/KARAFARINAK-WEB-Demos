@@ -75,11 +75,11 @@
               </tr>
             </thead>
             <tbody>
-              <tr><td>ثبت و راه‌اندازی دامنه</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td></tr>
-              <tr><td>هاست و بارگذاری قالب سایت</td><td class="dynamic-service-price">۳,۰۰۰,۰۰۰ تومان</td></tr>
-              <tr><td>خدمات فعال‌سازی سرویس پیامکی و تنظیمات بر روی هاست و قالب سایت</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td></tr>
-              <tr><td>خدمات درگاه پرداخت موردنیاز و تغییرات لازم بر روی هاست و اتصال به قالب</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td></tr>
-              <tr><td>خدمات سرویس ارسال پستی و تنظیمات بر روی هاست و قالب سایت</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="domain"></td><td>ثبت و راه‌اندازی دامنه</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="hosting"></td><td>هاست و بارگذاری قالب سایت</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۳,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="sms"></td><td>فعال‌سازی سرویس پیامکی و تنظیمات روی هاست و قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="gateway"></td><td>خدمات درگاه پرداخت و تغییرات لازم روی هاست و اتصال به قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="postal"></td><td>خدمات سرویس ارسال پستی و تنظیمات روی هاست و قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
             </tbody>
           </table>
         </div>
@@ -121,24 +121,44 @@
   </footer>
 
   <script>
+    const BASE_PRICE = 12000000;
+    const BASE_TIME = 9;
     const ADDON_PRICE = 1500000;
+    const ADDON_TIME = 1;
+    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000,gateway:2000000,postal:2000000};
+    const SERVICE_TIME = 1;
     const checks = Array.from(document.querySelectorAll('input[name="addon"]'));
+    const serviceChecks = Array.from(document.querySelectorAll('input[name="service"]'));
     const note = document.getElementById('features-note');
 
-    checks.forEach(function(input) {
-      input.addEventListener('change', function() {
-        const selected = checks.filter(function(item) { return item.checked; }).map(function(item) { return item.value; });
-        localStorage.setItem('krf_dynamic_addons', JSON.stringify(selected));
-        const total = selected.length * ADDON_PRICE;
-        note.textContent = selected.length
-          ? selected.length.toLocaleString('fa-IR') + ' امکان انتخاب شده؛ هزینه امکانات تکمیلی: ' + total.toLocaleString('fa-IR') + ' تومان.'
-          : '';
-      });
-    });
-
-    document.getElementById('features-next').addEventListener('click', function() {
-      note.textContent = 'مرحله محاسبه قیمت نهایی پس از تکمیل ساختار این بخش فعال خواهد شد.';
-    });
+    function formatMoney(value){return value.toLocaleString('fa-IR')+' تومان';}
+    function updateCalculator(){
+      const selected=checks.filter(function(i){return i.checked;}).map(function(i){return i.value;});
+      const selectedServices=serviceChecks.filter(function(i){return i.checked;}).map(function(i){return i.value;});
+      const addonTotal=selected.length*ADDON_PRICE;
+      const serviceTotal=selectedServices.reduce(function(t,k){return t+(SERVICE_PRICES[k]||0);},0);
+      const totalPrice=BASE_PRICE+addonTotal+serviceTotal;
+      const addonTime=selected.length*ADDON_TIME;
+      const serviceTime=selectedServices.length*SERVICE_TIME;
+      const totalTime=BASE_TIME+addonTime+serviceTime;
+      localStorage.setItem('krf_dynamic_addons',JSON.stringify(selected));
+      localStorage.setItem('krf_dynamic_services',JSON.stringify(selectedServices));
+      localStorage.setItem('krf_dynamic_total_price',String(totalPrice));
+      localStorage.setItem('krf_dynamic_total_time',String(totalTime));
+      document.getElementById('calc-addon-price').textContent=formatMoney(addonTotal);
+      document.getElementById('calc-service-price').textContent=formatMoney(serviceTotal);
+      document.getElementById('calc-total-price').textContent=formatMoney(totalPrice);
+      document.getElementById('calc-addon-time').textContent=addonTime.toLocaleString('fa-IR')+' روز کاری';
+      document.getElementById('calc-service-time').textContent=serviceTime.toLocaleString('fa-IR')+' روز کاری';
+      document.getElementById('calc-total-time').textContent=totalTime.toLocaleString('fa-IR')+' روز کاری';
+      const parts=[];
+      if(selected.length) parts.push(selected.length.toLocaleString('fa-IR')+' امکان تکمیلی');
+      if(selectedServices.length) parts.push(selectedServices.length.toLocaleString('fa-IR')+' خدمت راه‌اندازی');
+      note.textContent=parts.length?parts.join(' و ')+' انتخاب شده؛ محاسبه مبلغ و زمان در پایین صفحه به‌روزرسانی شد.':'';
+    }
+    checks.concat(serviceChecks).forEach(function(input){input.addEventListener('change',updateCalculator);});
+    document.getElementById('features-next').addEventListener('click',function(){note.textContent='مبلغ و زمان نهایی در محاسبه‌گر پایین صفحه محاسبه شده است. مرحله بعد پس از تکمیل صفحه سفارش فعال می‌شود.';});
+    updateCalculator();
   </script>
 </body>
 </html>
