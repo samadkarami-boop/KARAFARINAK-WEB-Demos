@@ -271,7 +271,7 @@
 .dynamic-reminder strong{color:#4e4425;font-weight:900}
 .dynamic-service-box{background:linear-gradient(145deg,#ffffff,#f8fbfd)}
 .dynamic-service-head p{max-width:900px}
-.dynamic-service-table{min-width:1050px;table-layout:fixed}
+.dynamic-service-table{min-width:0;width:100%;table-layout:fixed}
 .dynamic-service-table th:nth-child(1),.dynamic-service-table td:nth-child(1){width:7%}
 .dynamic-service-table th:nth-child(2),.dynamic-service-table td:nth-child(2){width:42%;white-space:nowrap}
 .dynamic-service-table th:nth-child(3),.dynamic-service-table td:nth-child(3){width:13%}
@@ -309,13 +309,18 @@
  .dynamic-option-head h2,.dynamic-service-head h2{font-size:1.05rem}
  .dynamic-option-head p,.dynamic-service-head p{font-size:.7rem}
  .dynamic-option-table{min-width:650px}
- .dynamic-service-table{min-width:1050px}
+ .dynamic-service-table{min-width:0;width:100%;table-layout:fixed}
  .dynamic-option-table thead th,.dynamic-service-table thead th{padding:9px 5px;font-size:.64rem}
  .dynamic-option-table tbody td,.dynamic-service-table tbody td{padding:9px 6px;font-size:.67rem}
  .dynamic-service-table th:nth-child(2),.dynamic-service-table td:nth-child(2){white-space:normal}
- .dynamic-service-table th:nth-child(5),.dynamic-service-table td:nth-child(5){font-size:.62rem}
+ .dynamic-service-table th:nth-child(5),.dynamic-service-table td:nth-child(5){font-size:.58rem;line-height:1.75}
  .dynamic-calculator{padding:16px}
  .dynamic-calculator-grid{grid-template-columns:1fr 1fr}
  .dynamic-stage-actions{flex-direction:column-reverse}
  .dynamic-stage-back,.dynamic-stage-next{width:100%}
 }
+
+/* Compact service table: shared by content and store flows */
+.dynamic-service-table-wrap{overflow-x:hidden}
+.dynamic-service-table th,.dynamic-service-table td{overflow-wrap:anywhere;word-break:normal}
+.dynamic-service-table th:nth-child(2),.dynamic-service-table td:nth-child(2){font-weight:800}
