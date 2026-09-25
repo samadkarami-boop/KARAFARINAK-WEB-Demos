@@ -56,3 +56,41 @@ Kpanel همچنین گزینه‌ای با عنوان **«افزونه پیام�
 از این پس در سفارش‌هایی که مشتری «سرویس پیامکی» درخواست کند، Kpanel به‌عنوان گزینه پیشنهادی ثبت‌شده کارآفرینک در نظر گرفته می‌شود؛ مگر اینکه نیاز یا سرویس دیگری از طرف مشتری مطرح باشد. هزینه سرویس شخص ثالث از هزینه خدمات اجرایی کارآفرینک جدا خواهد بود.
 
 مقادیر API Key و سایر اطلاعات محرمانه عمداً در گزارش‌ها و GitHub ذخیره نمی‌شوند.
+
+
+## 2026-09-26 — تکمیل Previewهای Dynamic و Release Assetهای Static
+
+### Dynamic Template Preview
+- ریپوی مرجع Dynamic: `samadkarami-boop/Karafarinak-Base`.
+- موتور مشترک `_engine` بررسی و رندر واقعی Variationها با Chromium/Playwright انجام شد.
+- در مجموع **54 Variation** موجود در Base برای Preview ثبت شد:
+  - 49 Variation سایت‌های محتوایی/خدماتی
+  - 5 Variation فروشگاهی
+- مسیر استاندارد هر Preview: `<Family>/<Variation>/preview/cover.png`.
+- وجود واقعی هر 54 فایل `preview/cover.png` در tree فعلی GitHub تأیید شد.
+- commit فعلی Base که Previewها در آن موجودند: `1cf5e0c8321edacf2cb35a09e60767d48065aae4`.
+- نکته معماری: Previewها از Template واقعی Base و موتور مشترک تولید شده‌اند؛ تصویر ساختگی یا AI-generated جایگزین قالب واقعی نشده است.
+
+### Static Template Release
+- ریپوی مرجع: `samadkarami-boop/KRF-WEB-001-Corporate`.
+- برای 6 قالب Static، Homepage Screenshot با Chromium/Playwright در viewport `1440×1000` تولید و در `preview/cover.png` ثبت شد.
+- برای هر 6 قالب، ZIP نهایی از `package/` ساخته و با `unzip -t` اعتبارسنجی شد.
+- Run نهایی ساخت Release Assetها: `36192954576` — **success**.
+- ZIPها در همان مسیر محصول قرار دارند و برای مرحله بعدی اتصال به WooCommerce/Download آماده‌اند.
+
+## 2026-09-26 — بررسی راهنمای افزونه WordPress پیامکی
+
+- دسترسی به تصاویر `makhzan/12.jpg` تا `makhzan/20.jpg` مجدداً بررسی و این بار **تصویری خوانده شد**.
+- راهنما مربوط به **WP-SMS** است و در تصاویر نسخه نمایشی `5.4.1` دیده می‌شود.
+- موارد عملیاتی مشاهده‌شده شامل اتصال iPPANEL، شماره مدیر، کد کشور، شماره خط ارسال، Unicode، Clean Numbers، گروه‌ها، Verify Subscriber، Welcome SMS، قواعد شماره موبایل، International Telephone Input، REST API، اطلاع‌رسانی رویدادها و یکپارچه‌سازی با WooCommerce/EDD/Contact Form 7 است.
+- راهنما نشان می‌دهد WP-SMS مسیر اتصال به iPPANEL را دارد؛ برای پروژه کارآفرینک، اتصال Kpanel/IPPanel باید در محیط WordPress تست شود و Pattern سرویس از مسیر رسمی Kpanel/IPPanel پیاده‌سازی شود.
+- هیچ API Key، رمز عبور یا credential واقعی در گزارش ثبت نشده است.
+- جزئیات این بررسی نیز در `Karafarinak-Plugins/sms/kpanel/README.md` ثبت شد.
+- Commit ثبت مستندات افزونه: `245b3d748e6242122726989168b326b0b547a785`.
+
+## وضعیت مسیر کار بعد از این مرحله
+- Site2 static/dynamic source و مستندات آن‌ها تکمیل و ممیزی شده‌اند.
+- Previewهای Dynamic برای 54 Variation ثبت شده‌اند.
+- ZIPهای Static برای 6 قالب فعلی ساخته و اعتبارسنجی شده‌اند.
+- راهنمای WP-SMS/Kpanel بررسی و در Plugins ثبت شده است.
+- مرحله بعدی فنی، **پیاده‌سازی/تست WordPress + WooCommerce بر مبنای نسخه نهایی Site2** است؛ قبل از انتقال نهایی، در صورت تغییر طراحی یا قرارداد فروش در Site2، WordPress باید از نسخه تأییدشده نهایی تغذیه شود.
