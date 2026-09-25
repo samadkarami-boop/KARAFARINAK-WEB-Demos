@@ -617,3 +617,13 @@ Checkbox:
 - علت: selector مربوط به `.enamad-wrap` بدون نقطه نوشته شده بود و CSS کلاس روی `span` اعمال نمی‌شد.
 - اصلاح در `Site2/style.css`: کلاس `.enamad-wrap` به `inline-flex` با `white-space: nowrap` و جلوگیری از جمع‌شدن badge تنظیم شد.
 - Commit: `7c5214154caada64e64c9807212fd51c527d3f33`
+
+## 2026-09-25 — معماری آرشیو WordPress و بک‌آپ Site2
+
+- مخزن اصلی ادامه طراحی: `samadkarami-boop/KARAFARINAK-WEB-Demos` و مسیر `Site2/` است.
+- نسخه فعلی و تأییدشده طراحی Site2 در snapshot مخزن اصلی با commit مرجع `4fdf15479881a86a997453a3ec8ba8f9e55827de` ثبت شد.
+- بک‌آپ کامل همین نسخه در مخزن خصوصی `samadkarami-boop/Karafarinak-wordpress` و مسیر `backups/Site2-2026-09-25/` کپی شد.
+- در مخزن WordPress، نسخه قبلی طراحی WordPress حذف نشده است؛ کل نسخه قبلی به مسیر `archive/wordpress-original-2026-09-25/` منتقل و نگهداری شد.
+- commit نهایی مخزن WordPress برای این انتقال و بک‌آپ: `f9387252ff3b1631398e689182bc3959366377f9`.
+- از این مرحله به بعد، اصلاحات طراحی و تجربه کاربری ابتدا فقط در `Site2/` انجام می‌شود. مخزن WordPress فعلاً نقش آرشیو/بک‌آپ دارد و پس از نهایی‌شدن Site2، پیاده‌سازی WordPress از روی نسخه تأییدشده انجام خواهد شد.
+- هدف این ساختار: جلوگیری از چند نسخه موازی، جلوگیری از گم‌شدن نسخه قبلی WordPress، و مشخص بودن محل نسخه اصلی و محل بک‌آپ.
