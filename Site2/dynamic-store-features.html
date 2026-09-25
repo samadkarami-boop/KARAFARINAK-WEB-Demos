@@ -72,7 +72,7 @@
 
       <div class="dynamic-reminder">
         <strong>یادآوری:</strong>
-        خرید و تهیه هاست و دامنه، تهیه سرویس پیامکی و ثبت‌نام/فعال‌سازی سرویس ارسال پستی بر عهده مشتری است. در صورت نیاز به دریافت خدمات این موارد توسط کارآفرینک، هزینه خدمات انجام و فعال‌سازی جداگانه محاسبه می‌شود.
+        خرید و تهیه هاست و دامنه، تهیه سرویس پیامکی و ثبت‌نام/فعال‌سازی سرویس ارسال پستی و فرآیندهای مربوط به اینماد و درگاه پرداخت، وابسته به آماده بودن اطلاعات و شرایط سرویس مربوطه است. در صورت درخواست خدمات توسط کارآفرینک، هزینه خرید سرویس‌ها جداگانه و هزینه خدمات انجام و فعال‌سازی طبق جدول محاسبه می‌شود.
       </div>
 
       <section class="dynamic-service-box">
@@ -97,6 +97,7 @@
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="sms"></td><td>فعال‌سازی سرویس پیامکی و تنظیمات روی هاست و قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="gateway"></td><td>خدمات درگاه پرداخت و تغییرات لازم روی هاست و اتصال به قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی سایت ارائه‌دهنده خدمات محاسبه می‌شود.</td></tr>
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="postal"></td><td>خدمات سرویس ارسال پستی و تنظیمات روی هاست و قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>برای فروشگاه؛ راه‌اندازی استاندارد ارسال و تنظیمات روی سایت. هزینه خرید سرویس و توسعه اختصاصی/API جداگانه است.</td></tr>
+              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="enamad"></td><td>دریافت و راه‌اندازی اینماد</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td><td>پس از آماده و بارگذاری شدن سایت، با ارائه اطلاعات کسب‌وکار و مدارک موردنیاز مشتری انجام می‌شود.</td></tr>
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="consulting"></td><td>جلسه مشاوره و انتخاب سرویس‌های موردنیاز سایت</td><td class="dynamic-service-duration">۱ جلسه</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td><td>بررسی نیازهای فروشگاه و پیشنهاد هاست، دامنه، پیامک، درگاه و سرویس‌های جانبی متناسب با پروژه.</td></tr>
             </tbody>
           </table>
@@ -120,12 +121,12 @@
           <div><span>زمان خدمات انتخاب‌شده</span><strong id="calc-service-time">۰ روز کاری</strong></div>
           <div><span>زمان آماده‌سازی نهایی</span><strong id="calc-total-time">۹ روز کاری</strong></div>
         </div>
-        <p class="dynamic-calculator-note">زمان هر خدمت راه‌اندازی، پس از فعال‌سازی سرویس مربوطه توسط سایت ارائه‌دهنده خدمات محاسبه می‌شود.</p>
+        <p class="dynamic-calculator-note">برای اینماد و درگاه پرداخت، دامنه و هاست فعال و سایت بارگذاری و در دسترس بودن آن ضروری است؛ اطلاعات کسب‌وکار و مدارک موردنیاز نیز باید توسط مشتری ارائه شود. زمان هر خدمت پس از فراهم شدن پیش‌نیازهای آن محاسبه می‌شود.</p>
       </section>
 
       <div class="dynamic-stage-actions">
         <a class="dynamic-stage-back" href="dynamic-template-selection.html">→ بازگشت به انتخاب قالب</a>
-        <button class="dynamic-stage-next" type="button" id="features-next">ادامه به محاسبه قیمت ←</button>
+        <button class="dynamic-stage-next" type="button" id="features-next">ادامه به اخذ اطلاعات مشتری ←</button>
       </div>
       <p class="dynamic-config-note" id="features-note" aria-live="polite"></p>
     </section>
@@ -147,8 +148,8 @@
     const BASE_TIME = 9;
     const ADDON_PRICE = 1500000;
     const ADDON_TIME = 1;
-    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000,gateway:2000000,postal:2000000,consulting:1000000};
-    const SERVICE_TIMES = {domain:1,hosting:1,sms:1,gateway:1,postal:1,consulting:0};
+    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000,gateway:2000000,postal:2000000,enamad:1000000,consulting:1000000};
+    const SERVICE_TIMES = {domain:1,hosting:1,sms:1,gateway:1,postal:1,enamad:1,consulting:0};
     const checks = Array.from(document.querySelectorAll('input[name="addon"]'));
     const serviceChecks = Array.from(document.querySelectorAll('input[name="service"]'));
     const note = document.getElementById('features-note');
@@ -201,7 +202,7 @@
       note.textContent=parts.length?parts.join(' و ')+' انتخاب شده؛ محاسبه مبلغ و زمان در پایین صفحه به‌روزرسانی شد.':'';
     }
     checks.concat(serviceChecks).forEach(function(input){input.addEventListener('change',updateCalculator);});
-    document.getElementById('features-next').addEventListener('click',function(){note.textContent='مبلغ و زمان نهایی در محاسبه‌گر پایین صفحه محاسبه شده است. مرحله بعد پس از تکمیل صفحه سفارش فعال می‌شود.';});
+    document.getElementById('features-next').addEventListener('click',function(){ window.location.href='dynamic-customer-info.html'; });
     updateCalculator();
   </script>
 </body>
