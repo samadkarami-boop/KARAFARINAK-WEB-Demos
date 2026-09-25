@@ -105,7 +105,7 @@
 .dynamic-config-shell{padding:48px 20px 76px}
 .dynamic-config{width:min(980px,100%);margin:0 auto}
 .dynamic-config-head{text-align:center;margin-bottom:28px}
-.dynamic-step{display:inline-flex;align-items:center;justify-content:center;margin-bottom:10px;padding:7px 18px;border:1px solid #b9cfe3;border-radius:999px;background:#e7eef7;color:#245da8;font-size:.82rem;font-weight:900;line-height:1.2;box-shadow:0 5px 14px rgba(35,71,106,.07)}
+.dynamic-step{display:inline-flex;align-items:center;justify-content:center;margin:0 auto 14px;padding:8px 22px;border:2px solid #9eb9d2;border-radius:999px;background:#e7eef7;color:#173f72;font-size:.9rem;font-weight:900;line-height:1.2;box-shadow:0 4px 12px rgba(35,71,106,.12)}
 .dynamic-config-head h1{margin:0 0 10px;color:#17324d;font-size:clamp(1.8rem,4vw,2.5rem);line-height:1.4}
 .dynamic-step{font-weight:900}
 .dynamic-config-head p{max-width:760px;margin:0 auto;color:#667c92;font-size:.9rem;line-height:2.05}
