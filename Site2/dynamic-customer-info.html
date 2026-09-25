@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>اطلاعات مشتری | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260925-1200">
+  <link rel="stylesheet" href="style.css?v=20260925-1300">
   <style>
     .customer-info-box{background:#fff;border:1px solid #dfe7ef;border-radius:18px;padding:24px;margin-top:20px}
     .customer-info-note{background:#f7fafc;border-right:4px solid #4c6a7a;padding:16px;border-radius:10px;line-height:2;margin-top:16px}
@@ -21,7 +21,7 @@
     .customer-conditional-note.is-visible{display:block}
     .customer-submit-note{margin-top:18px;color:#5d6975}
     @media(max-width:700px){.customer-form-grid{grid-template-columns:1fr}.customer-field.full{grid-column:auto}.customer-info-box{padding:17px}}
-  </style>
+      .customer-contact-warning{font-weight:800;font-size:1.02rem;color:#263746;background:#fff8e8;border-right-color:#b7791f}\n  </style>
 </head>
 <body class="dynamic-config-page">
 <header class="site-header">
@@ -38,7 +38,7 @@
     <p>لطفاً اطلاعات زیر را با دقت وارد کنید. شماره موبایل و ایمیل ثبت‌شده، ملاک اطلاع‌رسانی و ارسال و دریافت فایل‌ها و اطلاعات مربوط به سفارش خواهد بود.</p>
   </div>
   <section class="customer-info-box">
-    <div class="customer-info-note"><strong>نکته مهم:</strong> همه اطلاعات عمومی این فرم الزامی هستند. اطلاعاتی مانند کد ملی و کد پستی فقط زمانی نمایش داده و اجباری می‌شوند که خدمت انتخاب‌شده به آن‌ها نیاز داشته باشد. برای خدمات اینماد و درگاه پرداخت، دامنه و هاست فعال و سایت بارگذاری و در دسترس بودن آن ضروری است.</div>
+    <div class="customer-info-note customer-contact-warning"><strong>توجه بسیار مهم:</strong> اطلاعات تماس این فرم برای ادامه ارتباط و تبادل اطلاعات مربوط به سفارش، از جمله اطلاع‌رسانی، ارسال و دریافت فایل‌ها و مدارک، الزامی است و کلیه این موارد صرفاً از طریق اطلاعات تماس ثبت‌شده در همین فرم انجام خواهد شد. لطفاً اطلاعات را با دقت و به‌صورت صحیح و قابل دسترس وارد کنید.</div>
     <form id="customer-form" novalidate>
       <div class="customer-form-grid">
         <div class="customer-field"><label for="full-name">نام و نام خانوادگی <strong class="dynamic-required-mark">(الزامی)</strong></label><input id="full-name" name="fullName" required autocomplete="name"><span class="dynamic-field-error">ورود اطلاعات الزامی است.</span></div>
@@ -88,6 +88,10 @@
   if(messages.length){note.textContent=messages.join(' ');note.classList.add('is-visible');}
   const form=document.getElementById('customer-form');
   const fields=[...form.querySelectorAll('input,textarea')];
+  function isVisible(field){
+    const conditional=field.closest('.customer-conditional');
+    return !conditional || conditional.classList.contains('is-visible');
+  }
   function setError(field,message){
     const box=field.parentElement.querySelector('.dynamic-field-error');
     if(!box)return;
@@ -95,14 +99,15 @@
     box.classList.toggle('is-hidden',!message);
   }
   function validateField(field){
-    if(field.type==='hidden'||!field.offsetParent)return true;
+    if(!isVisible(field)) return true;
     const value=field.value.trim();
     if(field.required&&!value){setError(field,'ورود اطلاعات الزامی است.');return false;}
     if(field.id==='mobile'&&value&&!/^0[0-9۰-۹]{9}$/.test(value)){setError(field,'شماره موبایل باید ۱۰ رقم و با صفر شروع شود.');return false;}
-    if(field.id==='email'&&value&&!/^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/.test(value)){setError(field,'فرمت صحیح ایمیل وارد نشده است.');return false;}
+    if(field.id==='email'&&value&&!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(value)){setError(field,'فرمت صحیح ایمیل وارد نشده است.');return false;}
     if(field.id==='national-id'&&field.required&&value&&!/^[0-9۰-۹]{10}$/.test(value)){setError(field,'کد ملی باید ۱۰ رقم باشد.');return false;}
     if(field.id==='postal-code'&&field.required&&value&&!/^[0-9۰-۹]{10}$/.test(value)){setError(field,'کد پستی باید ۱۰ رقم باشد.');return false;}
-    setError(field,''); return true;
+    setError(field,'');
+    return true;
   }
   fields.forEach(field=>{
     field.addEventListener('input',()=>validateField(field));
@@ -110,19 +115,20 @@
   });
   function validateAll(){
     let ok=true;
-    fields.forEach(field=>{if(field.offsetParent&&!validateField(field))ok=false;});
+    fields.forEach(field=>{if(isVisible(field)&&!validateField(field))ok=false;});
     return ok;
   }
-  fields.forEach(field=>{if(field.required&&field.offsetParent)validateField(field);});
+  fields.forEach(field=>{if(field.required&&isVisible(field))validateField(field);});
+
   form.addEventListener('submit',function(e){
     e.preventDefault();
-    if(!validateAll())return;
+    if(!validateAll()) return;
     const data={};
     new FormData(form).forEach((v,k)=>data[k]=String(v).trim());
     data.services=services;
     data.savedAt=new Date().toISOString();
     localStorage.setItem('krf_dynamic_customer_info',JSON.stringify(data));
-    window.location.href='dynamic-invoice.html';
+    window.location.assign('dynamic-invoice.html');
   });
 })();
 </script>
