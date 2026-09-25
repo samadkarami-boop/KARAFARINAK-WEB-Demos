@@ -21,7 +21,7 @@
     <section class="dynamic-config">
       <div class="dynamic-config-head">
         <span class="dynamic-step">مرحله ۱</span>
-        <h1>انتخاب نوع سایت</h1>
+        <h1>انتخاب نوع سایت <strong class="dynamic-required-mark">(الزامی)</strong></h1>
         <p>نوع سایت پایه خود را انتخاب کنید. قیمت پایه هر نوع سایت متفاوت است و امکانات و قالب در مراحل بعدی انتخاب می‌شوند.</p>
       </div>
 
@@ -45,7 +45,7 @@
             </span>
           </label>
         </div>
-      </section>
+      <p id="type-required-error" class="dynamic-choice-error">انتخاب نوع سایت الزامی است.</p>
 
       <section class="dynamic-summary">
         <div>
@@ -82,13 +82,16 @@
     const selectedType = document.getElementById('selected-type');
     const nextButton = document.getElementById('type-next');
     const note = document.getElementById('type-note');
+    const requiredError = document.getElementById('type-required-error');
 
+    if(requiredError) requiredError.classList.toggle('is-hidden', typeInputs.some(i=>i.checked));
     typeInputs.forEach(input => {
       input.addEventListener('change', () => {
         typeInputs.forEach(item => item.closest('.dynamic-type-card').classList.toggle('selected', item.checked));
         selectedType.textContent = input.dataset.title;
         document.getElementById('base-price').textContent = input.value === 'store' ? '۱۲,۰۰۰,۰۰۰ تومان' : '۱۰,۰۰۰,۰۰۰ تومان';
         nextButton.disabled = false;
+        requiredError.classList.add('is-hidden');
         note.textContent = 'نوع سایت انتخاب شد؛ در مرحله بعد قالب مناسب را انتخاب می‌کنید.';
         localStorage.setItem('krf_dynamic_site_type', input.value);
         localStorage.setItem('krf_dynamic_site_type_title', input.dataset.title);
