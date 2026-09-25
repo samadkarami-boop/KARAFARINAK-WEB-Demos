@@ -133,8 +133,8 @@
     const variationTitle = localStorage.getItem('krf_dynamic_variation_title') || 'انتخاب نشده';
     const BASE_TIME = 9;
     const ADDON_PRICE = 1500000;
-    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000,gateway:2000000,postal:2000000,consulting:1000000};
-    const SERVICE_TIMES = {domain:1,hosting:1,sms:1,gateway:1,postal:1,consulting:0};
+    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000,consulting:1000000};
+    const SERVICE_TIMES = {domain:1,hosting:1,sms:1,consulting:0};
     const checks = Array.from(document.querySelectorAll('input[name="addon"]'));
     const serviceChecks = Array.from(document.querySelectorAll('input[name="service"]'));
     const note = document.getElementById('features-note');
