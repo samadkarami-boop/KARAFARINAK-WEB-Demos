@@ -78,6 +78,48 @@
         </div>
       </section>
 
+      <section class="dynamic-base-features" id="dynamic-base-features" hidden>
+        <div class="dynamic-base-features-head">
+          <div>
+            <span class="dynamic-feature-eyebrow">طراحی فروشگاهی کارآفرینک</span>
+            <h2>امکانات پایه طراحی</h2>
+            <p>تمام واریانت‌های فروشگاهی کارآفرینک بر بستر <strong>WooCommerce</strong> طراحی و پیاده‌سازی می‌شوند. معماری پایه فروشگاه از ابتدا با درنظرگرفتن مدیریت محصولات، دسته‌بندی‌ها، سبد خرید، ثبت سفارش و فرآیند تسویه‌حساب طراحی می‌شود.</p>
+          </div>
+          <div class="woocommerce-badge"><span>WooCommerce</span><small>هسته فروشگاه</small></div>
+        </div>
+        <div class="dynamic-base-table-wrap">
+          <table class="dynamic-base-table">
+            <thead>
+              <tr>
+                <th>امکانات پایه طراحی</th>
+                <th data-variant-col="ECM-01">ECM-01<br><span>فروشگاه عمومی</span></th>
+                <th data-variant-col="ECM-02">ECM-02<br><span>محوریت محصول</span></th>
+                <th data-variant-col="ECM-03">ECM-03<br><span>فروشگاه برند</span></th>
+                <th data-variant-col="ECM-04">ECM-04<br><span>مد و تصویرمحور</span></th>
+                <th data-variant-col="ECM-05">ECM-05<br><span>کاتالوگ و فروش سازمانی</span></th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr><th>صفحه اصلی فروشگاهی</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>صفحه فروشگاه و آرشیو محصولات</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>دسته‌بندی و ساختار محصولات</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>صفحه اختصاصی محصول</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>سبد خرید و تسویه‌حساب</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>ثبت و مدیریت سفارش‌ها</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>جستجوی محصولات</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>فیلترهای پایه محصولات</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>ویژگی‌ها و متغیرهای محصول</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>تصاویر و گالری محصول</th><td>✓</td><td>✓✓</td><td>✓</td><td>✓✓</td><td>✓</td></tr>
+              <tr><th>تخفیف و کد تخفیف</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>روش‌های ارسال</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>طراحی واکنش‌گرا برای موبایل</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+              <tr><th>صفحات عمومی درباره ما و تماس با ما</th><td>✓</td><td>✓</td><td>✓</td><td>✓</td><td>✓</td></tr>
+            </tbody>
+          </table>
+        </div>
+        <div class="dynamic-base-note"><strong>نکته:</strong> علامت ✓✓ یعنی آن قابلیت در طراحی آن واریانت تمرکز و اهمیت بیشتری دارد؛ هزینه جداگانه‌ای ندارد.</div>
+      </section>
+
       <section class="dynamic-summary dynamic-template-summary">
         <div>
           <span>نوع سایت</span>
@@ -245,6 +287,12 @@
     variationRows.addEventListener('change', function(e) {
       if (!e.target.matches('input[name="variation"]')) return;
       selectedVariation = selectedFamily.vars.find(function(v) { return v[0] === e.target.value; });
+      if (type === 'store') {
+        document.getElementById('dynamic-base-features').hidden = false;
+        document.querySelectorAll('[data-variant-col]').forEach(function(col) {
+          col.classList.toggle('active-variant', col.dataset.variantCol === selectedVariation[0]);
+        });
+      }
       document.querySelectorAll('.variation-row').forEach(function(row) {
         row.classList.toggle('selected', row.dataset.code === selectedVariation[0]);
       });
