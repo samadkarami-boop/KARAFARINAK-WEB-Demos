@@ -22,7 +22,7 @@
       <div class="dynamic-config-head">
         <span class="dynamic-step">مرحله ۱</span>
         <h1>انتخاب نوع سایت</h1>
-        <p>نوع سایت پایه خود را انتخاب کنید. قیمت پایه برای هر دو نوع یکسان است و امکانات و قالب در مراحل بعدی انتخاب می‌شوند.</p>
+        <p>نوع سایت پایه خود را انتخاب کنید. قیمت پایه هر نوع سایت متفاوت است و امکانات و قالب در مراحل بعدی انتخاب می‌شوند.</p>
       </div>
 
       <section class="dynamic-type-box">
@@ -41,7 +41,7 @@
             <span class="dynamic-type-card-body">
               <strong>سایت فروشگاهی</strong>
               <em>برای فروش محصولات، مدیریت سفارش‌ها، سبد خرید، پرداخت و امکانات مرتبط با فروش آنلاین</em>
-              <b>قیمت پایه: ۱۰,۰۰۰,۰۰۰ تومان</b>
+              <b>قیمت پایه: ۱۲,۰۰۰,۰۰۰ تومان</b>
             </span>
           </label>
         </div>
@@ -54,7 +54,7 @@
         </div>
         <div>
           <span>قیمت پایه</span>
-          <strong id="base-price">۱۰,۰۰۰,۰۰۰ تومان</strong>
+          <strong id="base-price">انتخاب نشده</strong>
         </div>
         <div>
           <span>زمان پایه آماده‌سازی</span>
@@ -87,11 +87,12 @@
       input.addEventListener('change', () => {
         typeInputs.forEach(item => item.closest('.dynamic-type-card').classList.toggle('selected', item.checked));
         selectedType.textContent = input.dataset.title;
+        document.getElementById('base-price').textContent = input.value === 'store' ? '۱۲,۰۰۰,۰۰۰ تومان' : '۱۰,۰۰۰,۰۰۰ تومان';
         nextButton.disabled = false;
         note.textContent = 'نوع سایت انتخاب شد؛ در مرحله بعد قالب مناسب را انتخاب می‌کنید.';
         localStorage.setItem('krf_dynamic_site_type', input.value);
         localStorage.setItem('krf_dynamic_site_type_title', input.dataset.title);
-        localStorage.setItem('krf_dynamic_base_price', '10000000');
+        localStorage.setItem('krf_dynamic_base_price', input.value === 'store' ? '12000000' : '10000000');
       });
     });
 
