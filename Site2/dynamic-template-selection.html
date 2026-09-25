@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width,initial-scale=1">
   <title>انتخاب قالب سایت دینامیک | کارآفرینک</title>
-  <link rel="stylesheet" href="style.css?v=20260925-0600">
+  <link rel="stylesheet" href="style.css?v=20260925-0700">
 </head>
 <body class="dynamic-config-page">
   <header class="site-header">
@@ -24,6 +24,18 @@
         <h1>انتخاب قالب سایت</h1>
         <p id="type-description">ابتدا زمینه و سپس قالب مناسب سایت خود را انتخاب کنید.</p>
       </div>
+
+      <section class="dynamic-base-type-card" id="dynamic-base-type-card">
+        <div class="dynamic-base-type-card-head">
+          <span>نوع سایت پایه انتخاب شده</span>
+          <strong id="base-type-title">انتخاب نشده</strong>
+        </div>
+        <p id="base-type-description">نوع سایت انتخاب‌شده در مرحله قبل در اینجا نمایش داده می‌شود.</p>
+        <div class="dynamic-base-type-meta">
+          <div><span>قیمت پایه</span><strong id="base-type-price">—</strong></div>
+          <div><span>زمان پایه</span><strong>حداقل ۷ روز کاری</strong></div>
+        </div>
+      </section>
 
       <section class="dynamic-template-box">
         <div class="dynamic-template-section-head">
@@ -219,6 +231,9 @@
     const familyRows = document.getElementById('family-rows');
     const variationRows = document.getElementById('variation-rows');
     const variationHint = document.getElementById('variation-hint');
+    const baseTypeTitle = document.getElementById('base-type-title');
+    const baseTypeDescription = document.getElementById('base-type-description');
+    const baseTypePrice = document.getElementById('base-type-price');
     const summaryType = document.getElementById('summary-type');
     const summaryBasePrice = document.getElementById('summary-base-price');
     const summaryPrice = document.getElementById('summary-price');
@@ -232,11 +247,18 @@
     const nextButton = document.getElementById('template-next');
     const note = document.getElementById('template-note');
 
+    const baseTypeDescriptions = {
+      content: 'برای سایت‌های شرکتی، خدماتی، شخصی، حرفه‌ای، معرفی کسب‌وکار و ارائه محتوا',
+      store: 'برای فروش محصولات، مدیریت سفارش‌ها، سبد خرید، پرداخت و امکانات مرتبط با فروش آنلاین'
+    };
+    baseTypeTitle.textContent = typeTitle || 'نوع سایت انتخاب نشده';
+    baseTypeDescription.textContent = baseTypeDescriptions[type] || 'نوع سایت انتخاب‌شده در مرحله قبل در اینجا نمایش داده می‌شود.';
+    baseTypePrice.textContent = formattedBasePrice;
     summaryType.textContent = typeTitle || 'نوع سایت از مرحله قبل انتخاب نشده';
     document.getElementById('type-description').textContent =
       type === 'store'
-        ? 'برای سایت فروشگاهی، ابتدا زمینه فروشگاهی و سپس واریانت مناسب آن را انتخاب کنید.'
-        : 'برای سایت محتوایی، ابتدا زمینه موردنظر و سپس واریانت مناسب آن را انتخاب کنید.';
+        ? 'برای سایت فروشگاهی، زمینه فروشگاهی و سپس واریانت مناسب آن را انتخاب کنید.'
+        : 'برای سایت محتوایی، زمینه موردنظر و سپس واریانت مناسب آن را انتخاب کنید.';
 
     let selectedFamily = null;
     let selectedVariation = null;
