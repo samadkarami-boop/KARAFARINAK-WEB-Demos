@@ -83,7 +83,6 @@
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="domain"></td><td>ثبت و راه‌اندازی دامنه به نام مشتری</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td><td>دامنه به نام مشتری ثبت می‌شود؛ احراز هویت و اطلاعات لازم توسط مشتری انجام می‌شود و تنظیمات اتصال دامنه توسط کارآفرینک انجام خواهد شد.</td></tr>
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="hosting"></td><td>مشاوره، تهیه هاست و بارگذاری قالب سایت</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۳,۰۰۰,۰۰۰ تومان</td><td>انتخاب سرویس متناسب با سایت، تهیه در صورت درخواست و بارگذاری/تنظیم اولیه قالب؛ هزینه خرید هاست جداگانه است.</td></tr>
               <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="sms"></td><td>فعال‌سازی سرویس پیامکی و تنظیمات روی هاست و قالب</td><td class="dynamic-service-duration">۱ روز کاری</td><td class="dynamic-service-price">۲,۰۰۰,۰۰۰ تومان</td><td>مدت زمان پس از فعال‌سازی سرویس از سوی ارائه‌دهنده محاسبه می‌شود؛ هزینه خرید سرویس پیامکی جداست.</td></tr>
-              <tr><td><input class="dynamic-option-select service-select" type="checkbox" name="service" value="consulting"></td><td>جلسه مشاوره و انتخاب سرویس‌های موردنیاز سایت</td><td class="dynamic-service-duration">۱ جلسه</td><td class="dynamic-service-price">۱,۰۰۰,۰۰۰ تومان</td><td>بررسی نیازهای سایت و ارائه پیشنهاد برای هاست، دامنه، پیامک، درگاه و سرویس‌های جانبی متناسب با پروژه.</td></tr>
             </tbody>
           </table>
         </div>
@@ -131,8 +130,8 @@
     const variationTitle = localStorage.getItem('krf_dynamic_variation_title') || 'انتخاب نشده';
     const BASE_TIME = 9;
     const ADDON_PRICE = 1500000;
-    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000,consulting:1000000};
-    const SERVICE_TIMES = {domain:1,hosting:1,sms:1,consulting:0};
+    const SERVICE_PRICES = {domain:1000000,hosting:3000000,sms:2000000};
+    const SERVICE_TIMES = {domain:1,hosting:1,sms:1};
     const checks = Array.from(document.querySelectorAll('input[name="addon"]'));
     const serviceChecks = Array.from(document.querySelectorAll('input[name="service"]'));
     const note = document.getElementById('features-note');
