@@ -68,7 +68,7 @@ Kpanel همچنین گزینه‌ای با عنوان **«افزونه پیام�
   - 5 Variation فروشگاهی
 - مسیر استاندارد هر Preview: `<Family>/<Variation>/preview/cover.png`.
 - وجود واقعی هر 54 فایل `preview/cover.png` در tree فعلی GitHub تأیید شد.
-- commit فعلی Base که Previewها در آن موجودند: `1cf5e0c8321edacf2cb35a09e60767d48065aae4`.
+- نسخه فعلی Branch `main` در Base که Previewها و گزارش Verification را دربر دارد: `74dbd6d461ec8a135298d12f83c16da37eabfeda`؛ commit اصلی تولید 54 Preview: `1cf5e0c8321edacf2cb35a09e60767d48065aae4`.
 - نکته معماری: Previewها از Template واقعی Base و موتور مشترک تولید شده‌اند؛ تصویر ساختگی یا AI-generated جایگزین قالب واقعی نشده است.
 
 ### Static Template Release
