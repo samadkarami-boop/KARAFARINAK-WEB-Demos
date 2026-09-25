@@ -39,7 +39,7 @@
 
       <section class="dynamic-template-box">
         <div class="dynamic-template-section-head">
-          <h2>۱. زمینه قالب</h2>
+          <h2>۱. زمینه قالب <strong class="dynamic-required-mark">(الزامی)</strong></h2>
           <span id="family-hint">زمینه پیش‌فرض نمایش داده شده است؛ در صورت نیاز می‌توانید زمینه دیگری را انتخاب کنید.</span>
         </div>
         <div class="dynamic-family-table-wrap">
@@ -55,11 +55,12 @@
             <tbody id="family-rows"></tbody>
           </table>
         </div>
+        <p id="family-required-error" class="dynamic-choice-error">انتخاب زمینه قالب الزامی است.</p>
       </section>
 
       <section class="dynamic-template-box dynamic-variation-box">
         <div class="dynamic-template-section-head">
-          <h2>۲. انتخاب واریانت قالب</h2>
+          <h2>۲. انتخاب واریانت قالب <strong class="dynamic-required-mark">(الزامی)</strong></h2>
           <span id="variation-hint">واریانت‌های زمینه انتخاب‌شده به‌صورت خودکار نمایش داده می‌شوند.</span>
         </div>
         <div class="dynamic-variation-table-wrap">
@@ -78,6 +79,7 @@
             </tbody>
           </table>
         </div>
+        <p id="variation-required-error" class="dynamic-choice-error">انتخاب واریانت قالب الزامی است.</p>
       </section>
 
       <section class="dynamic-template-preview" id="template-preview">
@@ -225,6 +227,8 @@
     };
 
     const type = localStorage.getItem('krf_dynamic_site_type') || '';
+    const familyRequiredError=document.getElementById('family-required-error');
+    const variationRequiredError=document.getElementById('variation-required-error');
     const typeTitle = localStorage.getItem('krf_dynamic_site_type_title') || '';
     const activeFamilies = type === 'store' ? families.store : families.content;
 
@@ -347,6 +351,8 @@
     });
 
     renderFamilies();
+    if (familyRequiredError) familyRequiredError.classList.toggle('is-hidden', !!document.querySelector('input[name="family"]:checked'));
+    if (variationRequiredError) variationRequiredError.classList.toggle('is-hidden', !selectedVariation);
   </script>
 </body>
 </html>
