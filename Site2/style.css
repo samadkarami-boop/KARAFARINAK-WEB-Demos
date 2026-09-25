@@ -287,6 +287,8 @@
 .dynamic-stage-next{border:1px solid #2f8b57;background:#2f8b57;color:#fff}
 @media(max-width:700px){
  .dynamic-option-box,.dynamic-service-box{padding:16px}
+ .dynamic-selected-summary{padding:16px}
+ .dynamic-selected-list{grid-template-columns:1fr 1fr}
  .dynamic-option-head h2,.dynamic-service-head h2{font-size:1.05rem}
  .dynamic-option-head p,.dynamic-service-head p{font-size:.7rem}
  .dynamic-option-table{min-width:650px}
