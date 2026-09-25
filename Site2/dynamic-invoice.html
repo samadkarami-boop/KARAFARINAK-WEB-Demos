@@ -41,6 +41,18 @@
     </div>
   </section>
 
+  <section class="dynamic-invoice-details dynamic-payment-box" id="invoice-download-area">
+    <h2>جزئیات موارد انتخاب‌شده</h2>
+    <div class="dynamic-invoice-detail-grid">
+      <div><h3>امکانات تکمیلی</h3><ul id="invoice-addon-list"><li>موردی انتخاب نشده است.</li></ul></div>
+      <div><h3>خدمات انتخاب‌شده</h3><ul id="invoice-service-list"><li>موردی انتخاب نشده است.</li></ul></div>
+    </div>
+    <div class="dynamic-invoice-download-actions" id="invoice-download-actions">
+      <button type="button" class="dynamic-download-button" id="print-invoice">چاپ / ذخیره پیش‌فاکتور به PDF</button>
+      <button type="button" class="dynamic-download-button secondary" id="download-invoice-html">دانلود نسخه پیش‌فاکتور و شرایط</button>
+    </div>
+  </section>
+
   <section class="dynamic-terms-repeat">
     <div class="dynamic-payment-box">
       <h2>شرایط و ضوابط سفارش</h2>
@@ -154,6 +166,15 @@
   const servicePrices=type==='سایت فروشگاهی'?storeServicePrices:contentServicePrices;
   const serviceTotal=services.reduce((sum,k)=>sum+(servicePrices[k]||0),0);
   const calculatedTotal=Number(base)+addonPrice+serviceTotal;
+  const addonNames={
+    'advanced-search':'جستجوی پیشرفته محصولات','advanced-filter':'فیلتر پیشرفته محصولات','wishlist':'علاقه‌مندی محصولات',
+    'reviews-rating':'امتیازدهی و نظرات مشتریان','sms':'اتصال به سامانه پیامکی','postal':'اتصال به سامانه ارسال پستی',
+    'advanced-contact':'فرم اختصاصی درخواست مشاوره و دریافت اطلاعات مشتری','projects':'بخش نمونه‌کارها و پروژه‌ها با ساختار اختصاصی',
+    'blog':'بخش اخبار، مقالات و وبلاگ با ساختار اختصاصی','advanced-gallery':'گالری و نمایش حرفه‌ای تصاویر و پروژه‌ها'
+  };
+  const serviceNames={domain:'ثبت و راه‌اندازی دامنه به نام مشتری',hosting:'مشاوره، تهیه هاست و بارگذاری قالب سایت',sms:'فعال‌سازی سرویس پیامکی و تنظیمات روی هاست و قالب',gateway:'خدمات درگاه پرداخت و اتصال به قالب',postal:'خدمات سرویس ارسال پستی و تنظیمات روی هاست و قالب',enamad:'دریافت و راه‌اندازی اینماد',consulting:'جلسه مشاوره و انتخاب سرویس‌های موردنیاز سایت'};
+  document.getElementById('invoice-addon-list').innerHTML=addons.length?addons.map(k=>'<li>'+ (addonNames[k]||k) +' — ۱,۵۰۰,۰۰۰ تومان</li>').join(''):'<li>موردی انتخاب نشده است.</li>';
+  document.getElementById('invoice-service-list').innerHTML=services.length?services.map(k=>'<li>'+ (serviceNames[k]||k) +' — '+formatMoney(servicePrices[k]||0)+'</li>').join(''):'<li>موردی انتخاب نشده است.</li>';
   document.getElementById('invoice-type').textContent=type;
   document.getElementById('invoice-family').textContent=familyMap[family]||family||'انتخاب نشده';
   document.getElementById('invoice-variation').textContent=variationCode?variationCode+' — '+variationTitle:'انتخاب نشده';
@@ -177,7 +198,17 @@
   pay.addEventListener('click',function(){
     if(!check.checked){err.classList.remove('is-hidden');return;}
     localStorage.setItem('krf_dynamic_invoice_confirmed','true');
-    document.getElementById('payment-note').textContent='پیش‌فاکتور تأیید شد. درگاه پرداخت هنوز به این صفحه متصل نشده است و پس از ثبت مرچنت/کلید درگاه، همین دکمه به پرداخت واقعی متصل می‌شود.';
+    document.getElementById('payment-note').textContent='پیش‌فاکتور تأیید شد. این دکمه برای اتصال به درگاه پرداخت آماده است؛ پس از تنظیم مرچنت/کلید درگاه، پرداخت واقعی از همین مسیر انجام می‌شود.';
+  });
+  document.getElementById('print-invoice').addEventListener('click',function(){window.print();});
+  document.getElementById('download-invoice-html').addEventListener('click',function(){
+    const clone=document.documentElement.cloneNode(true);
+    clone.querySelectorAll('script').forEach(s=>s.remove());
+    const actions=clone.querySelector('#invoice-download-actions'); if(actions)actions.remove();
+    const blob=new Blob(['<!doctype html>\\n'+clone.outerHTML],{type:'text/html;charset=utf-8'});
+    const url=URL.createObjectURL(blob);
+    const a=document.createElement('a');a.href=url;a.download='karafarinak-pishfactor.html';document.body.appendChild(a);a.click();a.remove();
+    setTimeout(()=>URL.revokeObjectURL(url),1000);
   });
 })();
 </script>
