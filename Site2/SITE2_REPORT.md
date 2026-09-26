@@ -190,3 +190,45 @@ GitHub محل اجرای WordPress نیست؛ محیط آزمایشی روی ه�
 - Live: بدون تغییر.
 
 **گام عملی باقی‌مانده برای خروج از حالت آماده‌سازی:** ساخت Subdomain `test.karafarinak.ir` و SSL در DirectAdmin. پس از در دسترس شدن این آدرس، نصب WordPress پایه آغاز می‌شود.
+
+
+## 2026-09-26 — تکمیل واقعی آماده‌سازی محیط آزمایشی WordPress
+
+### موارد انجام‌شده در DirectAdmin
+محیط آزمایشی طبق برنامه در هاست ParsPack ایجاد و اتصال آن به دامنه تأیید شد:
+
+- Subdomain: `test.karafarinak.ir` با موفقیت ساخته شد.
+- Document Root: `/domains/test.karafarinak.ir/public_html`
+- SSL برای `test.karafarinak.ir` به‌صورت خودکار فعال و گواهی اختصاصی آن در DirectAdmin ثبت شد.
+- تاریخ اعتبار گواهی ثبت‌شده در زمان بررسی: **25 دسامبر 2026**.
+- آدرس `https://test.karafarinak.ir` با موفقیت باز شد و صفحه Placeholder مربوط به همین Subdomain نمایش داده شد؛ بنابراین مسیر دامنه، HTTPS و Document Root عملیاتی هستند.
+
+### دیتابیس مستقل Test
+برای جلوگیری از هرگونه تداخل با سایت استاتیک قبلی و درگاه پرداخت، دیتابیس جدید و مستقل ساخته شد:
+
+- Database: `h423580_wp_test`
+- Host: `localhost`
+- Username: `h423580_wp_test`
+- Password: **عمداً در گزارش/GitHub ثبت نمی‌شود.**
+
+دیتابیس موجود `h423580_payment` مربوط به سایت استاتیک قبلی و درگاه پرداخت است و **نباید در محیط WordPress تست استفاده یا تغییر داده شود**.
+
+### وضعیت فایل‌های محیط Test
+در مسیر `/domains/test.karafarinak.ir/public_html` هنگام بررسی فقط فایل‌های پیش‌فرض DirectAdmin مشاهده شد:
+- `index.html` (Placeholder)
+- `cgi-bin/`
+
+بنابراین محیط برای نصب WordPress تمیز است و هنوز هیچ فایل WordPress در آن قرار نگرفته است.
+
+### وضعیت فعلی
+- Subdomain: **انجام شد**.
+- SSL: **انجام شد**.
+- اتصال HTTPS و Placeholder: **تأیید شد**.
+- Database مستقل: **انجام شد**.
+- WordPress: **هنوز نصب نشده**.
+- WooCommerce: **هنوز نصب نشده**.
+- Plugins: **هنوز نصب نشده**.
+- سایت اصلی و دیتابیس Live: **بدون تغییر**.
+
+### گام بعدی
+قبل از نصب WordPress، نسخه و تنظیمات PHP محیط Test باید مشخص/تأیید شود. پس از آن WordPress پایه نصب و بدون WooCommerce یا افزونه جانبی تست خواهد شد. اطلاعات محرمانه مانند رمز دیتابیس یا API Key در گزارش و GitHub ثبت نخواهد شد.
