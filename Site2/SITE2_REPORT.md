@@ -128,3 +128,65 @@ GitHub محل اجرای WordPress نیست؛ محیط آزمایشی روی ه�
 - افزونه‌ها: **هنوز وارد مرحله نصب نشده‌اند**.
 - سایت اصلی: **فعلاً بدون تغییر**.
 
+
+
+## 2026-09-26 — ثبت رسمی Backup مرجع قبل از WordPress
+
+برای جلوگیری از اشتباه در تشخیص Backup، مرجع زیر مستقیماً بررسی و تأیید شد:
+
+- Repository: `samadkarami-boop/Karafarinak-wordpress`
+- Backup رسمی Site2: `backups/Site2-2026-09-25/`
+- تاریخ Snapshot: **2026-09-25**
+- Commit مبنای Snapshot: `4fdf15479881a86a997453a3ec8ba8f9e55827de`
+- Commit ثبت Backup/Archive: `f9387252ff3b1631398e689182bc3959366377f9`
+- این Snapshot شامل فایل‌های Site2، HTML/CSS/SVG/تصاویر، گزارش و پوشه Preview است.
+- این Backup برای **Recovery و مقایسه نسخه قبل از پیاده‌سازی WordPress** نگهداری می‌شود و محل ادامه توسعه طراحی نیست.
+- آرشیو WordPress قبلی نیز جداگانه در `archive/wordpress-original-2026-09-25/` قرار دارد.
+
+مرجع‌های رسمی پروژه از این مرحله:
+1. `samadkarami-boop/KARAFARINAK-WEB-Demos/Site2/` → منبع اصلی و جاری طراحی.
+2. `samadkarami-boop/Karafarinak-wordpress/backups/Site2-2026-09-25/` → Backup مرجع قبل از WordPress.
+3. `samadkarami-boop/Karafarinak-wordpress/archive/wordpress-original-2026-09-25/` → آرشیو WordPress قبلی.
+
+از این مرحله به بعد، هیچ تغییر طراحی WordPress نباید به‌عنوان منبع طراحی اصلی ثبت شود؛ طراحی باید از نسخه تأییدشده Site2 تغذیه شود.
+
+## 2026-09-26 — اجرای گام بعد: آماده‌سازی محیط آزمایشی WordPress
+
+### وضعیت اجرای واقعی
+گام بعدی پروژه مشخص و وارد فاز اجرا شد: **ایجاد محیط آزمایشی جدا از سایت اصلی**.
+
+مشخصات محیط آزمایشی پیشنهادی:
+- Subdomain: `test.karafarinak.ir`
+- محیط اجرا: همان ParsPack Cloud Linux موجود
+- پنل مدیریت: DirectAdmin
+- دیتابیس: کاملاً مستقل از دیتابیس سایت اصلی
+- WordPress: نصب تازه و مستقل
+- WooCommerce: هنوز نصب نشود تا WordPress پایه تست شود
+- افزونه‌ها: تا قبل از تأیید WordPress و WooCommerce نصب نشوند
+
+### ترتیب اجرایی قفل‌شده
+1. ساخت `test.karafarinak.ir` در DirectAdmin.
+2. فعال‌سازی SSL برای Subdomain.
+3. ساخت Database و Database User مستقل برای Test.
+4. اطمینان از اتصال دامنه آزمایشی و باز شدن صفحه Test.
+5. نصب WordPress پایه.
+6. تست WordPress خام در Desktop / Tablet / Mobile.
+7. پس از تأیید WordPress پایه، نصب WooCommerce.
+8. سپس نصب افزونه‌ها یکی‌یکی و تست بعد از هر نصب.
+
+### کنترل ریسک
+- به `karafarinak.ir` اصلی دست زده نمی‌شود.
+- دیتابیس Test نباید با دیتابیس Live مشترک باشد.
+- قبل از تأیید WordPress پایه، WooCommerce و افزونه‌های جانبی نصب نمی‌شوند.
+- Backup مرجع Site2 در `Karafarinak-wordpress/backups/Site2-2026-09-25/` دست‌نخورده باقی می‌ماند.
+
+### وضعیت فعلی
+- Site2: آماده.
+- Backup مرجع: تأییدشده.
+- محیط Test: **نیازمند ساخت در DirectAdmin**.
+- WordPress: نصب نشده.
+- WooCommerce: نصب نشده.
+- Plugins: نصب نشده.
+- Live: بدون تغییر.
+
+**گام عملی باقی‌مانده برای خروج از حالت آماده‌سازی:** ساخت Subdomain `test.karafarinak.ir` و SSL در DirectAdmin. پس از در دسترس شدن این آدرس، نصب WordPress پایه آغاز می‌شود.
